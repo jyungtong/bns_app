@@ -1,0 +1,38 @@
+<%= form_for @event do |f| %>
+	<p>
+		<%= f.label :school_name %>:
+		<%= f.text_field :school_name %>
+	</p>
+
+	<p>
+		<%= f.label :start_place %>:
+		<%= f.text_field :start_place %>
+	</p>
+
+	<p>
+		<%= f.label :end_place %>:
+		<%= f.text_field :end_place %>
+	</p>
+
+	<p>
+		<%= f.label :start_datetime %>:
+		<%= f.text_field :start_datetime %>
+	</p>
+
+	<p>
+		<%= f.label :end_datetime %>:
+		<%= f.text_field :end_datetime %>
+	</p>
+
+	<p>
+		<%= f.label :max_student %>:
+		<%= f.text_field :max_student %>
+	</p>
+
+	<p>
+		<%= f.label :allowance_claim %>:
+		<%= f.text_field :allowance_claim %>
+	</p>
+
+	<%= f.submit "Create Event" %>
+<% end %>

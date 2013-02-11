@@ -1,0 +1,23 @@
+<%= form_for @user.profile do |f| %>
+	<p>
+		<%= f.label :first_name %>: 
+		<%= f.text_field :first_name %>
+	</p>
+
+	<p>
+		<%= f.label :last_name %>: 
+		<%= f.text_field :last_name %>
+	</p>
+
+	<p>
+		<%= f.label :contact_number %>: 
+		<%= f.text_field :contact_number %>
+	</p>
+	
+	<p>
+		<%= f.label :national_id %>: 
+		<%= f.text_field :national_id %>
+	</p>
+
+	<%= f.submit "Submit" %>
+<% end %>

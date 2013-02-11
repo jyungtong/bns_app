@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bns</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= link_to "Home", root_path, :class => 'brand' %>
+<ul class="nav">
+  <% if student_signed_in? %>
+		<%= render file: 'layouts/_student_actions' %>
+	<% elsif admin_signed_in? %>
+		<%= render file: 'layouts/_admin_actions' %>
+  <% else %>
+		<%= render file: 'layouts/_anonymous_actions' %>
+  <% end %>
+</ul>
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

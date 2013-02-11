@@ -1,0 +1,18 @@
+<h1>Event details:</h1>
+
+<table border="1" bordercolor="#FFCC00" style="background-color:#FFFFCC" width="50%" cellpadding="3" cellspacing="3">
+	<tr>
+		<td width="40%">School Name:</td>
+		<td><%= @event.school_name %></td>
+	</tr>
+	<tr>
+		<td>Starting point:</td>
+		<td><%= @event.start_place %></td>
+	</tr>
+	<tr>
+		<td>Seats available:</td>
+		<td><%= @event.seats_available %></td>
+	</tr>
+</table>
+
+<%= render 'event_actions' %>
