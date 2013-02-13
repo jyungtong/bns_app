@@ -1,38 +1,50 @@
+<% content_for :bootstrap_datetimepicker do %>
+	<%= javascript_include_tag "bootstrap-datetimepicker.min.js" %>
+	<%= stylesheet_link_tag 	 "bootstrap-datetimepicker.min.css" %>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#start_datetimepicker, #end_datetimepicker').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+  });
+</script>
+
 <%= form_for @event do |f| %>
-	<p>
-		<%= f.label :school_name %>:
-		<%= f.text_field :school_name %>
-	</p>
+	<%= f.label :school_name %>
+	<%= f.text_field :school_name %>
 
-	<p>
-		<%= f.label :start_place %>:
-		<%= f.text_field :start_place %>
-	</p>
+	<%= f.label :start_place %>
+	<%= f.text_field :start_place %>
 
-	<p>
-		<%= f.label :end_place %>:
-		<%= f.text_field :end_place %>
-	</p>
+	<%= f.label :end_place %>
+	<%= f.text_field :end_place %>
 
-	<p>
-		<%= f.label :start_datetime %>:
-		<%= f.text_field :start_datetime %>
-	</p>
+	<%= f.label :start_datetime %>
+	<div id="start_datetimepicker" class="input-append date">
+		<%= f.text_field :start_datetime, 'data-format' => "dd-MM-yyyy HH:mm PP" %>
+		<span class="add-on">
+			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+			</i>
+		</span>
+	</div>
 
-	<p>
-		<%= f.label :end_datetime %>:
-		<%= f.text_field :end_datetime %>
-	</p>
+	<%= f.label :end_datetime %>
+	<div id="end_datetimepicker" class="input-append date">
+		<%= f.text_field :end_datetime, 'data-format'=> "dd-MM-yyyy HH:mm PP"%>
+		<span class="add-on">
+			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+			</i>
+		</span>
+	</div>
 
-	<p>
-		<%= f.label :max_student %>:
-		<%= f.text_field :max_student %>
-	</p>
+	<%= f.label :max_student %>
+	<%= f.text_field :max_student %>
 
-	<p>
-		<%= f.label :allowance_claim %>:
-		<%= f.text_field :allowance_claim %>
-	</p>
+	<%= f.label :allowance_claim %>
+	<%= f.text_field :allowance_claim %>
 
 	<%= f.submit "Create Event" %>
 <% end %>
