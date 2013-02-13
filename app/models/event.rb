@@ -6,7 +6,12 @@ class Event < ActiveRecord::Base
 	has_many :users, through: :user_events
 
 	def seats_available
-		self.max_student - UserEvent.where(event_id: self.id).count
+		available = self.max_student - UserEvent.where(event_id: self.id).count
+		if available > 0
+			available
+		else
+			"full"
+		end
 	end
 
 	def event_action(user)

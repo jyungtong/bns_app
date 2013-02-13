@@ -1,17 +1,3 @@
-<% content_for :bootstrap_datetimepicker do %>
-	<%= javascript_include_tag "bootstrap-datetimepicker.min.js" %>
-	<%= stylesheet_link_tag 	 "bootstrap-datetimepicker.min.css" %>
-<% end %>
-
-<script type="text/javascript">
-  $(function() {
-    $('#start_datetimepicker, #end_datetimepicker').datetimepicker({
-      language: 'en',
-      pick12HourFormat: true
-    });
-  });
-</script>
-
 <%= form_for @event do |f| %>
 	<%= f.label :school_name %>
 	<%= f.text_field :school_name %>
@@ -48,3 +34,17 @@
 
 	<%= f.submit "Create Event" %>
 <% end %>
+
+<% content_for :bootstrap_datetimepicker do %>
+	<%= javascript_include_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js" %>
+	<%= stylesheet_link_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css" %>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#start_datetimepicker, #end_datetimepicker').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+  });
+</script>

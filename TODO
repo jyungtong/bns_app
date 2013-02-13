@@ -1,0 +1,11 @@
+Todo:
+	* list joined events
+
+In Progress:
+
+Done:
+	* add date time picker to create event.
+	* add bootstrap
+	* add stop join event when full
+	* list available events
+	* quit events
