@@ -1,5 +1,9 @@
 <h1>Recent Events</h1>
 
 <div id="events">
-	<%= render @events %>
+	<% if @events %>
+		<%= render @events %>
+	<% else %>
+		<p>You have no joined events currently.</p>
+	<% end %>
 </div>

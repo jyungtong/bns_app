@@ -4,6 +4,10 @@ Bns::Application.routes.draw do
 			post 'join' => 'events#join'
 			post 'quit' => 'events#quit'
 		end
+
+		collection do
+			get  'joined' => 'events#joined'
+		end
 	end
 
 	scope '/student' do

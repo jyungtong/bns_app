@@ -16,6 +16,10 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
+	def joined
+		@events = current_student.events
+	end
+
 	def create
 		event = Event.new params[:event]
 		if event.save
