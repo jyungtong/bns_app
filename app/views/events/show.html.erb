@@ -18,12 +18,12 @@
 
 	<tr>
 		<td>Start Date Time:</td>
-		<td><%= @event.start_datetime %></td>
+		<td><%= formatted_datetime(@event.start_datetime) %></td>
 	</tr>
 	
 	<tr>
 		<td>End Date Time:</td>
-		<td><%= @event.end_datetime %></td>
+		<td><%= formatted_datetime(@event.end_datetime) %></td>
 	</tr>
 
 	<tr>
