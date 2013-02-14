@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Bns</title>
-		<%= stylesheet_link_tag    "application" %>
+		<%= stylesheet_link_tag    "application", :media => 'all' %>
 		<%= javascript_include_tag "application" %>
 		<%= yield :bootstrap_datetimepicker %>
 		<%= csrf_meta_tags %>
