@@ -1,5 +1,9 @@
 <h1>Joined Events</h1>
 
 <div id="events">
-	<%= render @events %>
+	<% unless @events.empty? %>
+		<%= render @events %>
+	<% else %>
+		<%= content_tag :p, "You have not joined any events yet." %>
+	<% end %>
 </div>

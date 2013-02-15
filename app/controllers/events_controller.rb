@@ -37,7 +37,13 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		
+		event = Event.find params[:id]
+		if event.update_attributes params[:event]
+			redirect_to event, notice: "Event has been successfully updated."
+		else
+			flash.now[:error] = "Event failed to update."
+			render 'edit'
+		end
 	end
 
 	def join
