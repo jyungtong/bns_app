@@ -10,7 +10,9 @@
 
 	<%= f.label :event_date %>
 	<div id="event_datepicker" class="input-append">
-		<%= f.text_field :event_date, value: (@event.event_date.blank? ? '' : @event.event_date.strftime("%d-%m-%Y")), 'data-format' => "dd-MM-yyyy" %>
+		<%= f.text_field :event_date, 
+					value: (@event.event_date.blank? ? '' : @event.event_date.strftime("%d-%m-%Y")), 
+					'data-format' => "dd-MM-yyyy" %>
 		<span class="add-on">
 			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 			</i>
@@ -19,7 +21,9 @@
 
 	<%= f.label :start_time %>
 	<div id="start_timepicker" class="input-append date">
-		<%= f.text_field :start_time, value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 'data-format' => "HH:mm PP" %>
+		<%= f.text_field :start_time, 
+					value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
+					'data-format' => "HH:mm PP" %>
 		<span class="add-on">
 			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 			</i>
@@ -28,7 +32,9 @@
 
 	<%= f.label :end_time %>
 	<div id="end_timepicker" class="input-append date">
-		<%= f.text_field :end_time, value: (@event.end_time.blank? ? '' : formatted_time(@event.end_time)), 'data-format'=> "HH:mm PP"%>
+		<%= f.text_field :end_time, 
+					value: (@event.end_time.blank? ? '' : formatted_time(@event.end_time)), 
+					'data-format'=> "HH:mm PP"%>
 		<span class="add-on">
 			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 			</i>
@@ -38,8 +44,14 @@
 	<%= f.label :max_student %>
 	<%= f.text_field :max_student %>
 
+	<%= f.label :backup_student %>
+	<%= f.text_field :backup_student %>
+
 	<%= f.label :allowance_claim %>
 	<%= f.text_field :allowance_claim %>
+
+	<%= f.label :agency_in_charge %>
+	<%= f.text_field :agency_in_charge %>
 
 	<%= f.submit "Save Event" %>
 <% end %>

@@ -32,14 +32,30 @@
 	</tr>
 
 	<tr>
+		<td>Agency In Charge:</td>
+		<td><%= @event.agency_in_charge %></td>
+	</tr>
+
+	<tr>
 		<td>Allowance Claiming:</td>
 		<td><%= @event.allowance_claim %></td>
 	</tr>
+
+	<tr>
+		<td>Max student:</td>
+		<td><%= @event.total_student %></td>
+	</tr>
+
+	<% if admin_signed_in? %>
+		<tr>
+			<td>Backup student</td>
+			<td><%= @event.backup_student %></td>
+		</tr>
+	<% end %>
 
 	<tr>
 		<td>Seats available:</td>
 		<td><%= @event.seats_available %></td>
 	</tr>
 </table>
-
 <%= render 'event_actions' %>
