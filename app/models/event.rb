@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-	attr_accessible :school_name, :start_place, :end_place, :start_datetime, 
-									:end_datetime, :max_student, :allowance_claim
+	attr_accessible :school_name, :start_place, :end_place, :event_date, 
+									:start_time, :end_time, :max_student, :allowance_claim
 
 	has_many :user_events
 	has_many :users, through: :user_events

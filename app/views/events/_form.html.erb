@@ -8,18 +8,27 @@
 	<%= f.label :end_place %>
 	<%= f.text_field :end_place %>
 
-	<%= f.label :start_datetime %>
-	<div id="start_datetimepicker" class="input-append date">
-		<%= f.text_field :start_datetime, 'data-format' => "dd-MM-yyyy HH:mm PP" %>
+	<%= f.label :event_date %>
+	<div id="event_datepicker" class="input-append">
+		<%= f.text_field :event_date, 'data-format' => "dd-MM-yyyy" %>
 		<span class="add-on">
 			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 			</i>
 		</span>
 	</div>
 
-	<%= f.label :end_datetime %>
-	<div id="end_datetimepicker" class="input-append date">
-		<%= f.text_field :end_datetime, 'data-format'=> "dd-MM-yyyy HH:mm PP"%>
+	<%= f.label :start_time %>
+	<div id="start_timepicker" class="input-append date">
+		<%= f.text_field :start_time, 'data-format' => "HH:mm PP" %>
+		<span class="add-on">
+			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+			</i>
+		</span>
+	</div>
+
+	<%= f.label :end_time %>
+	<div id="end_timepicker" class="input-append date">
+		<%= f.text_field :end_time, 'data-format'=> "HH:mm PP"%>
 		<span class="add-on">
 			<i data-time-icon="icon-time" data-date-icon="icon-calendar">
 			</i>
@@ -44,9 +53,14 @@
 
 <script type="text/javascript">
   $(function() {
-    $('#start_datetimepicker, #end_datetimepicker').datetimepicker({
+    $('#start_timepicker, #end_timepicker').datetimepicker({
       language: 'en',
-      pick12HourFormat: true
+      pick12HourFormat: true,
+			pickDate: false
     });
+		$('#event_datepicker').datetimepicker({
+			language: 'en',
+			pickTime: false
+		});
   });
 </script>

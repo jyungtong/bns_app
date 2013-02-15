@@ -1,5 +1,9 @@
 module EventHelper
-	def formatted_datetime(dt)
-		dt.strftime("%^A %^B %d, %Y %I:%M %p")
+	def formatted_date(d)
+		d.strftime("%^A %^B %d %Y")
+	end
+
+	def formatted_time(t)
+		t.strftime("%I:%M %p")
 	end
 end
