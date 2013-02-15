@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= bootstrap-datetimepicker.min.js
+//= require back_button

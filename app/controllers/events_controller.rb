@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 	end
 
 	def joined
+		# To show the student's joined events
 		@events = current_student.events
 	end
 
@@ -28,6 +29,15 @@ class EventsController < ApplicationController
 			flash.now[:error] = "Event failed to create."
 			render 'new'
 		end
+	end
+
+	def edit
+		redirect_to root_path unless admin_signed_in?
+		@event = Event.find params[:id]
+	end
+
+	def update
+		
 	end
 
 	def join

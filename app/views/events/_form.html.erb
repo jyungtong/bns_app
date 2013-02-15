@@ -35,6 +35,8 @@
 	<%= f.submit "Create Event" %>
 <% end %>
 
+<%= button_tag "Back", class: "back_button" %>
+
 <% content_for :bootstrap_datetimepicker do %>
 	<%= javascript_include_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js" %>
 	<%= stylesheet_link_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css" %>
