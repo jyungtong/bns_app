@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
 	has_many :user_events
 	has_many :users, through: :user_events
 
+	default_scope order('event_date DESC')
+
 	def total_student
 		self.max_student + self.backup_student
 	end

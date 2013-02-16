@@ -1,4 +1,14 @@
 <%= div_for event do %>
-	<p>School name: <b><%= event.school_name %></b></p>
-	<%= link_to "View event", event %>
+	<tr>
+		<td><%= event_counter + 1 %></td>
+		<td><%= formatted_date(event.event_date) %></td>
+		<td><%= formatted_time(event.start_time) %></td>
+		<td><%= formatted_time(event.end_time) %></td>
+		<td><%= event.school_name %></td>
+		<td><%= event.agency_in_charge %></td>
+		<td><%= event.start_place %></td>
+		<td><%= event.end_place %></td>
+		<td><%= event.total_student %></td>
+		<td><%= button_to "View", event_path(event), method: :get %></td>
+	</tr>
 <% end %>

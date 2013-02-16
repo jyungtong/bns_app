@@ -6,3 +6,5 @@
 <% elsif admin_signed_in? %>
 	<%= button_to "Edit event", edit_event_path(@event), method: :get %>
 <% end %>
+
+<%= button_tag "Back", class: "back_button" %>
