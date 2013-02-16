@@ -59,20 +59,6 @@
 <%= button_tag "Back", class: "back_button" %>
 
 <% content_for :bootstrap_datetimepicker do %>
-	<%= javascript_include_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js" %>
-	<%= stylesheet_link_tag "http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css" %>
+	<%= javascript_include_tag "bootstrap-datetimepicker.min", "event" %>
+	<%= stylesheet_link_tag "bootstrap-datetimepicker.min" %>
 <% end %>
-
-<script type="text/javascript">
-  $(function() {
-    $('#start_timepicker, #end_timepicker').datetimepicker({
-      language: 'en',
-      pick12HourFormat: true,
-			pickDate: false
-    });
-		$('#event_datepicker').datetimepicker({
-			language: 'en',
-			pickTime: false
-		});
-  });
-</script>
