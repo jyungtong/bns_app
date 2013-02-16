@@ -4,8 +4,27 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+tokyo:
+  school_name: tokyo
+  start_place: ts
+  end_place: ts
+  max_student: 10
+  allowance_claim: "eat yourself"
+  event_date: 2013-03-03
+  start_time: 12:00
+  end_time: 17:00
+  agency_in_charge: JTB
+  backup_student: 2
+
+hyogo:
+  school_name: hyogo 
+  start_place: grand season
+  end_place: grand season
+  max_student: 50
+  allowance_claim: "eat whatever you want"
+  event_date: 2013-03-05
+  start_time: 12:00
+  end_time: 17:00
+  agency_in_charge: JTB
+  backup_student: 3
