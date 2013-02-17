@@ -46,6 +46,20 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def destroy
+		unless admin_signed_in?
+			redirect_to root_path
+			return
+		end
+
+		event = Event.find params[:id]
+		if event.destroy
+			redirect_to root_path, notice: "Event has been successfully deleted."
+		else 
+			redirect_to root_path, error: "Event failed to delete."
+		end
+	end
+
 	def join
 		userevent = current_student.user_events.build(event_id: params[:id])
 		if userevent.save

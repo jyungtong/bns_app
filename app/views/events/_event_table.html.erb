@@ -10,6 +10,9 @@
 		<td>End Place</td>
 		<td>Max Student</td>
 		<td></td>
+		<% if admin_signed_in? %>
+			<td></td>
+		<% end %>
 	</thead>
 	<tbody>
 		<%= render @events %>
