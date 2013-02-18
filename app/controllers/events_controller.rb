@@ -63,18 +63,16 @@ class EventsController < ApplicationController
 	def join
 		userevent = current_student.user_events.build(event_id: params[:id])
 		if userevent.save
-			redirect_to userevent.event, notice: "You have successfully joined this event."
+			redirect_to :back, notice: "You have successfully joined this event."
 		else
-			redirect_to userevent.event, error: "Failed to joined this event."
+			redirect_to :back, alert: userevent.errors.full_messages[0]
 		end
 	end
 
 	def quit
 		userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
 		if userevent.destroy
-			redirect_to userevent.event, notice: "You have quit this event."
-		else
-			redirect_to userevent.event, error: "Unable to quit this event."
+			redirect_to :back, notice: "You have quit this event."
 		end
 	end
 end
