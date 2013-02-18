@@ -3,28 +3,30 @@ class Event < ActiveRecord::Base
 									:start_time, :end_time, :max_student, :allowance_claim,
 									:agency_in_charge, :backup_student
 
+	#validates_presence_of :school_name, :event_date, :start_time, :end_time
+	validates :school_name, :event_date, :start_time, :end_time, presence: :true
+
 	has_many :user_events
 	has_many :users, through: :user_events
 
 	default_scope order('event_date DESC')
 
 	def total_student
-		self.max_student + self.backup_student
+		max_student + backup_student
 	end
 
 	def seats_available
-		available = self.max_student + self.backup_student - 
-									UserEvent.where(event_id: self.id).count
+		available = total_student - UserEvent.where(event_id: self.id).count
 
 		if available > 0
 			available
 		else
-			"full"
+			"FULL"
 		end
 	end
 
 	def event_action(user)
-		unless self.users.include?(user)
+		unless users.include?(user)
 			"join"
 		else
 			"quit"

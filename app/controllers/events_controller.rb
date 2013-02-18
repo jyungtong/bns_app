@@ -3,11 +3,11 @@ class EventsController < ApplicationController
 
   def index
 		@user = current_student || current_admin
-		@events ||= Event.all
+		@events = Event.all
   end
 
 	def show
-		@event ||= Event.find params[:id]
+		@event = Event.find params[:id]
 		@action = @event.event_action(current_student)
 	end
 
@@ -26,8 +26,8 @@ class EventsController < ApplicationController
 		if event.save
 			redirect_to events_path, notice: "Event is successfully created."
 		else
-			flash.now[:error] = "Event failed to create."
-			render 'new'
+			#flash.now[:error] = "Event failed to create."
+			redirect_to :back
 		end
 	end
 

@@ -1,7 +1,7 @@
 <% if student_signed_in? %>
 	<%= button_to "#{@action.capitalize} Event", 
 			@action == "quit" ? quit_event_path : join_event_path,
-			{ disabled: @event.seats_available == "full" && @action == "join" } %>
+			{ disabled: @event.seats_available == "FULL" && @action == "join" } %>
 
 <% elsif admin_signed_in? %>
 	<%= button_to "Edit event", edit_event_path(@event), method: :get %>
