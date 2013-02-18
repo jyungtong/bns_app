@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
 	def new
 		redirect_to root_path if student_signed_in?
-		@event = Event.new
+		@event = Event.new 
 	end
 
 	def joined
@@ -22,12 +22,11 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		event = Event.new params[:event]
-		if event.save
-			redirect_to event_path(event), notice: "Event is successfully created."
+		@event = Event.new params[:event]
+		if @event.save
+			redirect_to event_path(@event), notice: "Event is successfully created."
 		else
-			#flash.now[:error] = "Event failed to create."
-			redirect_to :back
+			render 'new'
 		end
 	end
 
@@ -37,11 +36,11 @@ class EventsController < ApplicationController
 	end
 
 	def update
-		event = Event.find params[:id]
-		if event.update_attributes params[:event]
-			redirect_to event, notice: "Event has been successfully updated."
+		@event = Event.find params[:id]
+		if @event.update_attributes params[:event]
+			redirect_to @event, notice: "Event has been successfully updated."
 		else
-			flash.now[:error] = "Event failed to update."
+			# flash.now[:error] = "Event failed to update."
 			render 'edit'
 		end
 	end
@@ -52,8 +51,8 @@ class EventsController < ApplicationController
 			return
 		end
 
-		event = Event.find params[:id]
-		if event.destroy
+		@event = Event.find params[:id]
+		if @event.destroy
 			redirect_to root_path, notice: "Event has been successfully deleted."
 		else 
 			redirect_to root_path, error: "Event failed to delete."
@@ -61,17 +60,17 @@ class EventsController < ApplicationController
 	end
 
 	def join
-		userevent = current_student.user_events.build(event_id: params[:id])
-		if userevent.save
+		@userevent = current_student.user_events.build(event_id: params[:id])
+		if @userevent.save
 			redirect_to :back, notice: "You have successfully joined this event."
 		else
-			redirect_to :back, alert: userevent.errors.full_messages[0]
+			redirect_to :back, alert: userevent.errors.full_messages.first
 		end
 	end
 
 	def quit
-		userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
-		if userevent.destroy
+		@userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
+		if @userevent.destroy
 			redirect_to :back, notice: "You have quit this event."
 		end
 	end
