@@ -32,4 +32,16 @@ class Event < ActiveRecord::Base
 			"quit"
 		end
 	end
+
+	def joined(student)
+		if self.include_student?(student)
+			"joined"
+		else
+			"nojoin"
+		end
+	end
+
+	def include_student?(student)
+		self.users.include?(student)
+	end
 end
