@@ -44,4 +44,8 @@ class Event < ActiveRecord::Base
 	def include_student?(student)
 		self.users.include?(student)
 	end
+
+	def seats_available_over_total
+		"#{seats_available} / #{total_student}"
+	end
 end
