@@ -1,6 +1,6 @@
 module EventHelper
 	def formatted_date(d)
-		d.strftime("%^A %^B %d %Y")
+		d.strftime("%d %b %Y (%a)")
 	end
 
 	def formatted_time(t)
