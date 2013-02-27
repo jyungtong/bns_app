@@ -8,10 +8,10 @@
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
 	<td><%= event.seats_available_over_total %></td>
-	<td><%= button_to "View", event_path(event), method: :get %></td>
 	<% if admin_signed_in? %>
 		<td><%= button_to "Delete", event_path(event), method: :delete %></td>
 	<% else student_signed_in? %>
+		<td><%= button_to "View", event_path(event), method: :get %></td>
 		<td><%= display_joined(event.joined(current_student))  %></td>
 	<% end %>
 </tr>
