@@ -1,3 +1,4 @@
+load "deploy/assets"
 require "rvm/capistrano"
 require "bundler/capistrano"
 
