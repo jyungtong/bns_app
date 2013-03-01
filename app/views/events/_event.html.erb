@@ -1,4 +1,4 @@
-<tr class="<%= event.joined(current_student) %>">
+<tr class="<%= status = event.join_status(@user_events) %>">
 	<td><%= event_counter + 1 %></td>
 	<td><%= formatted_date(event.event_date) %></td>
 	<td><%= formatted_time(event.start_time) %></td>
@@ -8,10 +8,12 @@
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
 	<td><%= event.seats_available_over_total %></td>
-	<td><%= button_to "View", event_path(event), method: :get %></td>
 	<% if admin_signed_in? %>
 		<td><%= button_to "Delete", event_path(event), method: :delete %></td>
 	<% else student_signed_in? %>
-		<td><%= display_joined(event.joined(current_student))  %></td>
+		<td><%= button_to "#{join_action(status)} Event", 
+						status == "joined" ? quit_event_path(event) : join_event_path(event),
+						{ disabled: event.seats_available == "FULL" && status != "joined" } %></td>
+		<td><%= display_joined(status)  %></td>
 	<% end %>
 </tr>

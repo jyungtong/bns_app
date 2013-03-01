@@ -25,20 +25,8 @@ class Event < ActiveRecord::Base
 		end
 	end
 
-	def event_action(user)
-		unless users.include?(user)
-			"join"
-		else
-			"quit"
-		end
-	end
-
-	def joined(student)
-		if self.include_student?(student)
-			"joined"
-		else
-			"nojoin"
-		end
+	def join_status(user_events)
+		user_events.include?(self) ? "joined" : "nojoin"
 	end
 
 	def include_student?(student)

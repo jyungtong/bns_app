@@ -4,12 +4,15 @@ class EventsController < ApplicationController
   def index
 		@user = current_student || current_admin
 		@events = Event.all
+		@user_events = @user.events
   end
 
+	=begin
 	def show
 		@event = Event.find params[:id]
 		@action = @event.event_action(current_student)
 	end
+	=end
 
 	def new
 		redirect_to root_path if student_signed_in?
@@ -18,7 +21,9 @@ class EventsController < ApplicationController
 
 	def joined
 		# To show the student's joined events
+		@user = current_student 
 		@events = current_student.events
+		@user_events = @user.events
 	end
 
 	def create
