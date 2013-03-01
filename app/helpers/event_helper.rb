@@ -10,4 +10,8 @@ module EventHelper
 	def display_joined(str)
 		str == "joined" ? "Joined" : "Not yet join"
 	end
+
+	def join_action(str)
+		str == "joined" ? "Quit" : "Join"
+	end
 end
