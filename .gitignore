@@ -23,3 +23,5 @@ rerun.txt
 pickle-email-*.html
 *.swp
 *.lock
+Capfile
+/config/deploy.rb
