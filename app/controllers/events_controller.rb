@@ -7,12 +7,12 @@ class EventsController < ApplicationController
 		@user_events = @user.events
   end
 
-	=begin
+=begin
 	def show
 		@event = Event.find params[:id]
 		@action = @event.event_action(current_student)
 	end
-	=end
+=end
 
 	def new
 		redirect_to root_path if student_signed_in?
