@@ -78,7 +78,7 @@ class EventsController < ApplicationController
 	def quit
 		@userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
 		if @userevent.destroy
-			redirect_to :back, notice: "You have quit this event."
+			redirect_to :back, notice: "You have quit the event."
 		end
 	end
 end
