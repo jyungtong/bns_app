@@ -71,7 +71,7 @@ class EventsController < ApplicationController
 		if @userevent.save
 			redirect_to :back, notice: "You have successfully joined this event."
 		else
-			redirect_to :back, alert: userevent.errors.full_messages.first
+			redirect_to :back, alert: @userevent.errors.full_messages.first
 		end
 	end
 
