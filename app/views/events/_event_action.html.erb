@@ -2,8 +2,9 @@
 	<td><%= button_to "Edit", edit_event_path(event), method: :get %></td>
 	<td><%= button_to "Delete", event_path(event), method: :delete %></td>
 <% else student_signed_in? %>
-	<td><%= button_to "#{join_action(status)} Event", 
-					status == "joined" ? quit_event_path(event) : join_event_path(event),
-					{ disabled: event.seats_available == "FULL" && status != "joined" } %></td>
-	<td><%= display_joined(status)  %></td>
+	<td id="join_button"><%= button_to "#{join_action(status)} Event", 
+					 status == "joined" ? quit_event_path(event) : join_event_path(event), 
+					{ remote: true, 
+						disabled: event.seats_available == "FULL" && status != "joined" } %></td>
+	<td id="join_status"><%= display_joined(status) %></td>
 <% end %>

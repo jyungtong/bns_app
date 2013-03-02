@@ -1,0 +1,19 @@
+var event_row = $("#<%= dom_id @userevent.event %>");
+
+event_row.removeClass("joined").addClass("nojoin");
+
+event_row.children("#seats_available").html("<%= @userevent.event.seats_available_over_total %>");
+
+event_row.children("#join_status").html("Not yet join");
+
+event_row.children("#join_button").html("<%= 
+	escape_javascript(button_to "Join Event", 
+	join_event_path(@userevent.event), 
+	remote: true) %>");
+
+$("#notice").html("<%= escape_javascript(render 'layouts/messages') %>")
+	.slideDown(function() {
+		setTimeout(function() {
+			$("#notice").slideUp();
+		}, 5000);
+	});

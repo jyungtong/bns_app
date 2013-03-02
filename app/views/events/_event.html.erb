@@ -7,6 +7,6 @@
 	<td><%= event.agency_in_charge %></td>
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
-	<td><%= event.seats_available_over_total %></td>
+	<td id="seats_available"><%= event.seats_available_over_total %></td>
 	<%= render 'event_action', event: event, status: status %>
 </tr>

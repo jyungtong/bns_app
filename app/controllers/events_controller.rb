@@ -68,17 +68,28 @@ class EventsController < ApplicationController
 
 	def join
 		@userevent = current_student.user_events.build(event_id: params[:id])
-		if @userevent.save
-			redirect_to :back, notice: "You have successfully joined this event."
-		else
-			redirect_to :back, alert: @userevent.errors.full_messages.first
+
+		respond_to do |format|
+			if @userevent.save
+				flash.now[:notice] = "You have successfully joined the event."
+				format.html { redirect_to :back, notice: "You have successfully joined the event." }
+				format.js
+			else
+				format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
+				format.js { render 'fail_join.js.erb', userevent: @userevent }
+			end
 		end
 	end
 
 	def quit
 		@userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
-		if @userevent.destroy
-			redirect_to :back, notice: "You have quit the event."
+
+		respond_to do |format|
+			if @userevent.destroy
+				flash.now[:notice] = "You have quit the event."
+				format.html { redirect_to :back, notice: "You have quit the event." }
+				format.js
+			end
 		end
 	end
 end
