@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   def index
 		@user = current_student || current_admin
 		@events = Event.all
-		@user_events = @user.events
+		if @user.is_a? Student
+			@user_events = @user.events  
+		end
   end
 
 =begin

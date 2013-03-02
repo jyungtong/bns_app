@@ -14,4 +14,12 @@ module EventHelper
 	def join_action(str)
 		str == "joined" ? "Quit" : "Join"
 	end
+
+	def get_join_status(event, user_events)
+		if user_events
+			event.join_status(user_events)
+		else
+			"admin"
+		end
+	end
 end
