@@ -11,7 +11,7 @@ Bns::Application.routes.draw do
 	end
 
 	scope '/student' do
-		resources :profile
+		resources :profile 
 	end
 
   devise_for :admins
