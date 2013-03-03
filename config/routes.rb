@@ -1,4 +1,6 @@
 Bns::Application.routes.draw do
+  get "education_profile/index"
+
 	resources :events do
 		member do
 			post 'join' => 'events#join'
@@ -12,6 +14,7 @@ Bns::Application.routes.draw do
 
 	scope '/student' do
 		resources :profile 
+		resources :education_profile
 	end
 
   devise_for :admins

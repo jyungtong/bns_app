@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  current_university: MyString
+  major_study: MyString
+  intake_year: 1
+  graduation_year: 1
+
+two:
+  current_university: MyString
+  major_study: MyString
+  intake_year: 1
+  graduation_year: 1

@@ -1,0 +1,15 @@
+<%= form_for @user.education_profile do |f| %>
+	<%= f.label :current_university %> 
+	<%= f.text_field :current_university %>
+
+	<%= f.label :major_study %> 
+	<%= f.text_field :major_study %>
+
+	<%= f.label :intake_year %> 
+	<%= f.text_field :intake_year %>
+
+	<%= f.label :graduation_year %> 
+	<%= f.text_field :graduation_year %>
+
+	<%= f.submit "Submit" %>
+<% end %>

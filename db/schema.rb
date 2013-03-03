@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302124018) do
+ActiveRecord::Schema.define(:version => 20130302151311) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(:version => 20130302124018) do
 
   create_table "education_profiles", :force => true do |t|
     t.string   "current_university"
-    t.string   "major"
+    t.string   "major_study"
     t.integer  "intake_year"
     t.integer  "graduation_year"
-    t.integer  "profile_id"
+    t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
