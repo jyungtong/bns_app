@@ -10,10 +10,8 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
- *= bootstrap-datetimepicker.min.css
+ *= require table
  */
-
-@import "event.css.sass";
 
 .content {
   background-color: #eee;

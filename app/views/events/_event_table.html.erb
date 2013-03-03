@@ -1,17 +1,25 @@
 <div id="notice" style="display: none;"></div>
-<table border="1" bordercolor="#FFCC00" style="background-color:#FFFFCC" width="100%" cellpadding="3" cellspacing="3">
+
+<table class="bordered" id="event_table">
 	<thead>
-		<td>No.</td>
-		<td>Event Date</td>
-		<td>Start Time</td>
-		<td>End Time</td>
-		<td>School Name</td>
-		<td>Agency in Charge</td>
-		<td>Start Place</td>
-		<td>End Place</td>
-		<td>Seats Avail. / Total</td>
+		<tr>
+			<th scope="col" abbr="Number">No.</th>
+			<th scope="col" abbr="Date">Event Date</th>
+			<th scope="col" abbr="StartT">Start Time</th>
+			<th scope="col" abbr="EndT">End Time</th>
+			<th scope="col" abbr="School">School Name</th>
+			<th scope="col" abbr="AIC">Agency In Charge</th>
+			<th scope="col" abbr="StartP">Start Place</th>
+			<th scope="col" abbr="EndP">End Place</th>
+			<th scope="col" abbr="Seats">Seats Avail. / Total</th>
+			<th colspan="2"></th>
+		</tr>
 	</thead>
 	<tbody>
 		<%= render @events %>
 	</tbody>
 </table>
+
+<% content_for :head do %>
+	<%= stylesheet_link_tag "event" %>
+<% end %>
