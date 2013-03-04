@@ -4,33 +4,25 @@
 	<%= stylesheet_link_tag "event" %>
 <% end %>
 
-<%= form_tag show_participants_events_path do %>
-	<table class="bordered" id="event_table">
-		<thead>
-			<tr>
-				<%= content_tag :th, "No.", 
-						{ abbr: :Number, 
-							scope: :col, 
-							colspan: admin_signed_in? ? 2 : 1 } %>
-				<th scope="col" abbr="Date">Event Date</th>
-				<th scope="col" abbr="StartT">Start Time</th>
-				<th scope="col" abbr="EndT">End Time</th>
-				<th scope="col" abbr="School">School Name</th>
-				<th scope="col" abbr="AIC">Agency In Charge</th>
-				<th scope="col" abbr="StartP">Start Place</th>
-				<th scope="col" abbr="EndP">End Place</th>
-				<th scope="col" abbr="Seats">Seats Avail. / Total</th>
-				<th colspan="2"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render @events %>
-		</tbody>
-	</table>
-	
-	<% if admin_signed_in? %>
-		<div>
-			<%= submit_tag 'Show Participants' %>
-		</div>
-	<% end %>
-<% end %>
+<table class="bordered" id="event_table">
+	<thead>
+		<tr>
+			<%= content_tag :th, "No.", 
+					{ abbr: :Number, 
+						scope: :col, 
+						colspan: admin_signed_in? ? 2 : 1 } %>
+			<th scope="col" abbr="Date">Event Date</th>
+			<th scope="col" abbr="StartT">Start Time</th>
+			<th scope="col" abbr="EndT">End Time</th>
+			<th scope="col" abbr="School">School Name</th>
+			<th scope="col" abbr="AIC">Agency In Charge</th>
+			<th scope="col" abbr="StartP">Start Place</th>
+			<th scope="col" abbr="EndP">End Place</th>
+			<th scope="col" abbr="Seats">Seats Avail. / Total</th>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @events %>
+	</tbody>
+</table>
