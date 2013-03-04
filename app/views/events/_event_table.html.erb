@@ -27,8 +27,10 @@
 			<%= render @events %>
 		</tbody>
 	</table>
-
-	<div>
-		<%= submit_tag 'Show Participants' %>
-	</div>
+	
+	<% if admin_signed_in? %>
+		<div>
+			<%= submit_tag 'Show Participants' %>
+		</div>
+	<% end %>
 <% end %>
