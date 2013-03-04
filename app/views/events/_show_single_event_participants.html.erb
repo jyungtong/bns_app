@@ -1,0 +1,14 @@
+<table class="bordered" id="participants_table">
+	<thead>
+		<tr>
+			<th>Timestamp</th>
+			<th>Full Name</th>
+			<th>National Identity</th>
+			<th>Contact Number</th>
+			<th>Email Address</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @events.first.user_events %>
+	</tbody>
+</table>

@@ -36,4 +36,8 @@ class Event < ActiveRecord::Base
 	def seats_available_over_total
 		"#{seats_available} / #{total_student}"
 	end
+
+	def event_header
+		"#{event_date} #{school_name}"
+	end
 end

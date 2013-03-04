@@ -22,4 +22,15 @@ module EventHelper
 			"admin"
 		end
 	end
+
+	def get_all_users(events)
+		users = []
+
+		# To retrieve all users with union method
+		for event in events
+			users = users | event.users
+		end
+
+		return users
+	end
 end

@@ -1,0 +1,12 @@
+<% for user in get_all_users(events) %>
+	<tr>
+		<th><%= user.profile.full_name %></th>
+		<% for event in events %>
+			<% if event.users.include? user %>
+				<td>●</td>
+			<% else %>
+				<td></td>
+			<% end %>
+		<% end %>
+	</tr>
+<% end %>
