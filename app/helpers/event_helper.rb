@@ -33,4 +33,15 @@ module EventHelper
 
 		return users
 	end
+
+	# Get total participants joined for specific number of days
+	def day_total(users, events, days)
+		total = 0
+
+		for user in users
+			total += ((( user.events & events ).count) == days) ? 1 : 0
+		end
+
+		return total
+	end
 end

@@ -1,6 +1,6 @@
-<% events.each_with_index do |event, i| %>
+<% events.count.times do |i| %>
 	<tr>
 		<th><%= i + 1 %></th>
-		<th><%=  %></th>
+		<td><%= day_total users, events, i+1 %></td>
 	</tr>
 <% end %>
