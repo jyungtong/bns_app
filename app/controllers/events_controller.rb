@@ -92,4 +92,8 @@ class EventsController < ApplicationController
 			end
 		end
 	end
+
+	def show_participants
+		@events = Event.find params[:event_ids]
+	end
 end

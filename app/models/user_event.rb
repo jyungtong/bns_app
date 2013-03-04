@@ -14,5 +14,9 @@ class UserEvent < ActiveRecord::Base
 		end
 	end
 
+	def timestamp
+		self.created_at.localtime
+	end
+
 	#accepts_nested_attributes_for :events, :users
 end

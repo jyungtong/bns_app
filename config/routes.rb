@@ -8,7 +8,8 @@ Bns::Application.routes.draw do
 		end
 
 		collection do
-			get  'joined' => 'events#joined'
+			get 'joined' => 'events#joined'
+			post 'show_participants' => 'events#show_participants'
 		end
 	end
 

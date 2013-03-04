@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 	has_one :education_profile, dependent: :destroy
 	has_many :user_events
 	has_many :events, through: :user_events
+
+	def full_name
+		"#{first_name} #{last_name}"
+	end
 end
