@@ -1,4 +1,7 @@
 <% if admin_signed_in? %>
+	<%= form_tag events_path, method: :get do %>
+		<%= hidden_field_tag "event" %>
+	<% end %>
 	<td><%= button_to "Edit", edit_event_path(event), method: :get %></td>
 	<td><%= button_to "Delete", event_path(event), method: :delete %></td>
 <% else student_signed_in? %>
