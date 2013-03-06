@@ -40,4 +40,8 @@ class Event < ActiveRecord::Base
 	def event_header
 		"#{event_date} #{school_name}"
 	end
+
+	def seats_available_over_max_backup
+		"#{seats_available} / #{max_student} + #{backup_student}"
+	end
 end

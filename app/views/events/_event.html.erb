@@ -10,6 +10,10 @@
 	<td><%= event.agency_in_charge %></td>
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
-	<td id="seats_available"><%= event.seats_available_over_total %></td>
+	<% if admin_signed_in? %>
+		<td id="seats_available"><%= event.seats_available_over_max_backup %></td>
+	<% else %>
+		<td id="seats_available"><%= event.seats_available_over_total %></td>
+	<% end %>
 	<%= render 'event_action', event: event, status: status %>
 </tr>
