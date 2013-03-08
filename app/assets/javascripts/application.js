@@ -15,3 +15,4 @@
 //= require bootstrap
 //= bootstrap-datetimepicker.min.js
 //= require back_button
+//= require rails.validations
