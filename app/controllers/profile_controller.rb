@@ -2,19 +2,26 @@ class ProfileController < ApplicationController
 	before_filter :authenticate_student!
 
   def index
-		@user = current_student
+		@user ||= current_student
 		
 		unless @user.profile
 			@user.profile = Profile.create
 		end
+
+		@profile = @user.profile
   end
 
 	def update
-		if current_student.profile.update_attributes params[:profile]
-			redirect_to profile_index_path, notice: "You have successfully updated profile."
+		@user = User.find params[:id]
+		@profile = @user.profile
+		@profile.assign_attributes params[:profile]
+
+		if @profile.save
+			flash.now[:notice] = "You have successfully updated profile."
 		else
-			flash.now[:error] = "Failed to update profile."
-			render action: "new"
+			flash.now[:alert] = "Failed to save profile information."
 		end
+
+		render "index"
 	end
 end

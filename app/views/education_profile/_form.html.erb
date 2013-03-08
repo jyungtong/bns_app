@@ -1,15 +1,39 @@
-<%= form_for @user.education_profile do |f| %>
-	<%= f.label :current_university %> 
-	<%= f.text_field :current_university %>
+<%= form_for(@user.education_profile, html: { class: :"form-horizontal" }) do |f| %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Current University*</label>
+		<div class="controls">
+			<%= f.text_field :current_university, placeholder: :"Eg. APU, HELP, INTI, TARC" %>
+		</div>
+	</div>
 
-	<%= f.label :major_study %> 
-	<%= f.text_field :major_study %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Major Study*</label>
+		<div class="controls">
+			<%= f.text_field :major_study, placeholder: :"Eg. Software Engineering, Business Management..." %>
+		</div>
+	</div>
 
-	<%= f.label :intake_year %> 
-	<%= f.text_field :intake_year %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Intake Year</label>
+		<div class="controls">
+			<%= f.text_field :intake_year, placeholder: :"Eg. 2011" %>
+		</div>
+	</div>
 
-	<%= f.label :graduation_year %> 
-	<%= f.text_field :graduation_year %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Graduation Year</label>
+		<div class="controls">
+			<%= f.text_field :graduation_year, placeholder: :"Eg. 2015" %>
+		</div>
+	</div>
 
-	<%= f.submit "Submit" %>
+	<div class="control-group">
+		<div class="controls">
+			<%= f.submit "Submit", class: :"btn btn-success" %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label for="input01" class="control-label">* Mandatory field</label>
+	</div>
 <% end %>

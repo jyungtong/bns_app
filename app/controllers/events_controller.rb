@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 		if @event.save
 			redirect_to events_path, notice: "Event is successfully created."
 		else
-			render 'new'
+			render "new"
 		end
 	end
 
