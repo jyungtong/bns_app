@@ -5,15 +5,14 @@ class ProfileController < ApplicationController
 		@user ||= current_student
 		
 		unless @user.profile
-			@user.profile = Profile.create
+			@user.profile = Profile.new
 		end
 
 		@profile = @user.profile
   end
 
 	def update
-		@user = User.find params[:id]
-		@profile = @user.profile
+		@profile = Profile.find params[:id]
 		@profile.assign_attributes params[:profile]
 
 		if @profile.save

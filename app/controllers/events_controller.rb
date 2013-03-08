@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	before_filter :custom_user_auth
+	before_filter :custom_user_auth, :profile_must_completed
 
   def index
 		@user = current_student || current_admin
