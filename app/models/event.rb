@@ -47,8 +47,10 @@ class Event < ActiveRecord::Base
 	end
 
 	def end_time_cannot_be_earlier_than_start_time
-		if end_time < start_time
-			errors.add(:end_time, "End time should not be earlier than start time.")
+		if end_time && start_time 
+			if end_time < start_time
+				errors.add(:end_time, "End time should not be earlier than start time.")
+			end
 		end
 	end
 end

@@ -1,78 +1,98 @@
-<%= form_for(@event) do |f| %>
+<%= form_for(@event, html: { class: :"form-horizontal" }) do |f| %>
 	<%= render "layouts/error_messages", model: @event %>
 
-	<div class="field">
-		<%= f.label :school_name %>
-		<%= f.text_field :school_name %>
-	</div>
-
-	<div class="field">
-		<%= f.label :start_place %>
-		<%= f.text_field :start_place %>
-	</div>
-
-	<div class="field">
-		<%= f.label :end_place %>
-		<%= f.text_field :end_place %>
-	</div>
-
-	<div class="field">
-		<%= f.label :event_date %>
-		<div id="event_datepicker" class="input-append">
-			<%= f.text_field :event_date, 
-					value: (@event.event_date.blank? ? '' : @event.event_date.strftime("%d-%m-%Y")), 
-					'data-format' => "dd-MM-yyyy" %>
-			<span class="add-on">
-				<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-				</i>
-			</span>
+	<div class="control-group">
+		<label for="input01" class="control-label">School Name*</label>
+		<div class="controls">
+			<%= f.text_field :school_name, placeholder: :"Eg. Tokyo HS" %>
 		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :start_time %>
-		<div id="start_timepicker" class="input-append date">
-			<%= f.text_field :start_time, 
-						value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
-						'data-format' => "HH:mm PP" %>
-			<span class="add-on">
-				<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-				</i>
-			</span>
+	<div class="control-group">
+		<label for="input01" class="control-label">Start Place*</label>
+		<div class="controls">
+			<%= f.text_field :start_place, placeholder: :"Eg. Timesquare, KLCC..." %>
 		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :end_time %>
-		<div id="end_timepicker" class="input-append date">
-			<%= f.text_field :end_time, 
-						value: (@event.end_time.blank? ? '' : formatted_time(@event.end_time)), 
-						'data-format'=> "HH:mm PP"%>
-			<span class="add-on">
-				<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-				</i>
-			</span>
+	<div class="control-group">
+		<label for="input01" class="control-label">End Place*</label>
+		<div class="controls">
+			<%= f.text_field :end_place, placeholder: :"Eg. Corus Hotel..." %>
 		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :max_student %>
-		<%= f.text_field :max_student %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Event Date*</label>
+		<div class="controls">
+			<div class="input-append" id="event_datepicker">
+				<%= f.text_field :event_date, placeholder: :"Eg. 25-11-2013",
+						value: (@event.event_date.blank? ? '' : @event.event_date.strftime("%d-%m-%Y")), 
+						'data-format' => "dd-MM-yyyy" %>
+				<span class="add-on">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+					</i>
+				</span>
+			</div>
+		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :backup_student %>
-		<%= f.text_field :backup_student %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Start Time*</label>
+		<div class="controls">
+			<div class="input-append" id="start_timepicker">
+				<%= f.text_field :start_time, placeholder: :"Eg. 07:00 AM",
+							value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
+							'data-format' => "HH:mm PP" %>
+				<span class="add-on">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+					</i>
+				</span>
+			</div>
+		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :allowance_claim %>
-		<%= f.text_field :allowance_claim %>
+	<div class="control-group">
+		<label for="input01" class="control-label">End Time*</label>
+		<div class="controls">
+			<div class="input-append" id="end_timepicker">
+				<%= f.text_field :end_time, placeholder: :"Eg. 07:00 PM",
+							value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
+							'data-format' => "HH:mm PP" %>
+				<span class="add-on">
+					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+					</i>
+				</span>
+			</div>
+		</div>
 	</div>
 
-	<div class="field">
-		<%= f.label :agency_in_charge %>
-		<%= f.text_field :agency_in_charge %>
+	<div class="control-group">
+		<label for="input01" class="control-label">Max Student*</label>
+		<div class="controls">
+			<%= f.text_field :max_student, placeholder: :"Eg. 50" %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label for="input01" class="control-label">Backup Student*</label>
+		<div class="controls">
+			<%= f.text_field :backup_student, placeholder: :"Eg. 2" %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label for="input01" class="control-label">Allowance Claim*</label>
+		<div class="controls">
+			<%= f.text_field :allowance_claim %>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label for="input01" class="control-label">Agency In Charge*</label>
+		<div class="controls">
+			<%= f.text_field :agency_in_charge %>
+		</div>
 	</div>
 
 	<div class="actions">
