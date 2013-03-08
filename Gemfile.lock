@@ -48,6 +48,7 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
+    client_side_validations (3.2.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -179,6 +180,7 @@ DEPENDENCIES
   bootstrap-sass
   capistrano
   capybara
+  client_side_validations
   coffee-rails
   cucumber-rails
   database_cleaner

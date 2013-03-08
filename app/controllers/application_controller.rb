@@ -9,11 +9,13 @@ class ApplicationController < ActionController::Base
 		end
 
 		def profile_must_completed
-			user = current_student
+			if current_student
+				user = current_student
 
-			if user.profile.nil? || user.profile.is_empty?
-				redirect_to profile_index_path, 
-					alert: "Please fill in your profile before joining events."
+				if user.profile.nil? || user.profile.is_empty?
+					redirect_to profile_index_path, 
+						alert: "Please fill in your profile before joining events."
+				end
 			end
 		end
 end

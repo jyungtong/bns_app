@@ -3,8 +3,9 @@ class Event < ActiveRecord::Base
 									:start_time, :end_time, :max_student, :allowance_claim,
 									:agency_in_charge, :backup_student
 
-	#validates_presence_of :school_name, :event_date, :start_time, :end_time
 	validates :school_name, :event_date, :start_time, :end_time, presence: :true
+
+	validate :end_time_cannot_be_earlier_than_start_time
 
 	has_many :user_events
 	has_many :users, through: :user_events
@@ -43,5 +44,11 @@ class Event < ActiveRecord::Base
 
 	def seats_available_over_max_backup
 		"#{seats_available} / #{max_student} + #{backup_student}"
+	end
+
+	def end_time_cannot_be_earlier_than_start_time
+		if end_time < start_time
+			errors.add(:end_time, "End time should not be earlier than start time.")
+		end
 	end
 end
