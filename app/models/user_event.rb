@@ -7,6 +7,7 @@ class UserEvent < ActiveRecord::Base
 	validates_uniqueness_of :user_id, scope: [:event_id]
 
 	validate :exceed_max_student
+	validate :cannot_join_expired_event
 
 	def exceed_max_student
 		unless self.event.users.count < self.event.total_student
@@ -16,6 +17,12 @@ class UserEvent < ActiveRecord::Base
 
 	def timestamp
 		self.created_at.localtime
+	end
+
+	def cannot_join_expired_event
+		if self.event.event_date < DateTime.now
+			errors.add(:event, "is expired. Please try other events.")
+		end
 	end
 
 	#accepts_nested_attributes_for :events, :users
