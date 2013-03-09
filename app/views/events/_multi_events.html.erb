@@ -1,8 +1,10 @@
 <% for user in get_all_users(events) %>
+	<% @i = 0 %>
 	<tr>
 		<th><%= user.profile.full_name %></th>
 		<% for event in events %>
-			<td><%= event.users.include?(user) ? "●" : "" %></td>
+			<td><%= event.users.include?(user) ? (@i += 1; "●") : "" %></td>
 		<% end %>
+		<td><%= @i %></td>
 	</tr>
 <% end %>

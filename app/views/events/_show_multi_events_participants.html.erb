@@ -19,6 +19,7 @@
 			<% for event in @events %>
 				<th><%= event.event_header %></th>
 			<% end %>
+			<th>Counts</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,5 +30,6 @@
 		<% for event in @events %>
 			<th><%= event.users.count %></th>
 		<% end %>
+		<th></th>
 	</tfoot>
 </table>
