@@ -46,6 +46,10 @@ class Event < ActiveRecord::Base
 		"#{seats_available} / #{max_student} + #{backup_student}"
 	end
 
+	def is_expired?
+		self.event_date < DateTime.now
+	end
+
 	def end_time_cannot_be_earlier_than_start_time
 		if end_time && start_time 
 			if end_time < start_time

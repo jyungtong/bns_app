@@ -20,7 +20,7 @@ class UserEvent < ActiveRecord::Base
 	end
 
 	def cannot_join_expired_event
-		if self.event.event_date < DateTime.now
+		if self.event.is_expired?
 			errors.add(:event, "is expired. Please try other events.")
 		end
 	end
