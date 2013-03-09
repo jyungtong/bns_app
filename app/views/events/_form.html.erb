@@ -1,112 +1,44 @@
-<%= form_for(@event, validate: true, html: { class: :"form-horizontal" }) do |f| %>
-	<%= render "layouts/error_messages", model: @event %>
+<%= simple_form_for(@event, html: { class: :"form-horizontal" }) do |f| %>
+	<%= f.input :school_name %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">School Name*</label>
-		<div class="controls">
-			<%= f.text_field :school_name, placeholder: :"Eg. Tokyo HS" %>
-		</div>
-	</div>
+	<%= f.input :start_place %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Start Place*</label>
-		<div class="controls">
-			<%= f.text_field :start_place, placeholder: :"Eg. Timesquare, KLCC..." %>
-		</div>
-	</div>
+	<%= f.input :end_place %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">End Place*</label>
-		<div class="controls">
-			<%= f.text_field :end_place, placeholder: :"Eg. Corus Hotel..." %>
-		</div>
-	</div>
+	<%= f.input :event_date, wrapper_html: { id: :"event_datepicker" }, wrapper: :append do %>
+		<%= f.input_field :event_date, as: :string, "data-format" => "dd-MM-yyyy" %>
+		<%= content_tag :span, 
+				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
+				class: :"add-on" %>
+	<% end %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Event Date*</label>
-		<div class="controls">
-			<div class="input-append" id="event_datepicker">
-				<%= f.text_field :event_date, placeholder: :"Eg. 25-11-2013",
-						value: (@event.event_date.blank? ? '' : @event.event_date.strftime("%d-%m-%Y")), 
-						'data-format' => "dd-MM-yyyy" %>
-				<span class="add-on">
-					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-					</i>
-				</span>
-			</div>
-		</div>
-	</div>
+	<%= f.input :start_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
+		<%= f.input_field :start_time, as: :string, "data-format" => "HH:mm PP" %>
+		<%= content_tag :span, 
+				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
+				class: :"add-on" %>
+	<% end %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Start Time*</label>
-		<div class="controls">
-			<div class="input-append" id="start_timepicker">
-				<%= f.text_field :start_time, placeholder: :"Eg. 07:00 AM",
-							value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
-							'data-format' => "HH:mm PP" %>
-				<span class="add-on">
-					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-					</i>
-				</span>
-			</div>
-		</div>
-	</div>
+	<%= f.input :end_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
+		<%= f.input_field :end_time, as: :string, "data-format" => "HH:mm PP" %>
+		<%= content_tag :span, 
+				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
+				class: :"add-on" %>
+	<% end %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">End Time*</label>
-		<div class="controls">
-			<div class="input-append" id="end_timepicker">
-				<%= f.text_field :end_time, placeholder: :"Eg. 07:00 PM",
-							value: (@event.start_time.blank? ? '' : formatted_time(@event.start_time)), 
-							'data-format' => "HH:mm PP" %>
-				<span class="add-on">
-					<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-					</i>
-				</span>
-			</div>
-		</div>
-	</div>
+	<%= f.input :max_student %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Max Student*</label>
-		<div class="controls">
-			<%= f.text_field :max_student, placeholder: :"Eg. 50" %>
-		</div>
-	</div>
+	<%= f.input :backup_student %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Backup Student*</label>
-		<div class="controls">
-			<%= f.text_field :backup_student, placeholder: :"Eg. 2" %>
-		</div>
-	</div>
+	<%= f.input :allowance_claim %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Allowance Claim*</label>
-		<div class="controls">
-			<%= f.text_field :allowance_claim %>
-		</div>
-	</div>
+	<%= f.input :agency_in_charge %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Agency In Charge*</label>
-		<div class="controls">
-			<%= f.text_field :agency_in_charge %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<div class="controls">
-			<%= f.submit "Submit", class: :"btn btn-success" %>
-			<%= button_tag "Back", class: "btn btn-info back_button" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label for="input01" class="control-label">* Mandatory field</label>
+	<div class="form-actions">
+		<%= f.button :submit, class: :"btn-success" %>
+		<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
 	</div>
 <% end %>
-
 
 <% content_for :head do %>
 	<%= javascript_include_tag "bootstrap-datetimepicker.min", "event" %>

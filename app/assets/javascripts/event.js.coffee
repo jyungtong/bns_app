@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-	$('#start_timepicker, #end_timepicker').datetimepicker
+	$('#event_timepicker .input-append').datetimepicker
 		language: 'en',
 		pick12HourFormat: true,
 		pickDate: false
-	$('#event_datepicker').datetimepicker
+	$('#event_datepicker .input-append').datetimepicker
 		language: 'en',
 		pickTime: false

@@ -1,46 +1,12 @@
-<%= form_for @profile, validate: true, html: { class: :"form-horizontal" } do |f| %>
-	<div class="control-group">
-		<label for="input01" class="control-label">First Name*</label>
-		<div class="controls">
-			<%= f.text_field :first_name, placeholder: :"First Name" %>
-		</div>
-	</div>
+<%= simple_form_for(@profile, validate: true, html: { class: :"form-horizontal" }) do |f| %>
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :contact_number %>
+	<%= f.input :national_identity %>
+	<%= f.input :facebook_name %>
 
-	<div class="control-group">
-		<label for="input01" class="control-label">Last Name*</label>
-		<div class="controls">
-			<%= f.text_field :last_name, placeholder: :"Last Name" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label for="input01" class="control-label">Contact Number*</label>
-		<div class="controls">
-			<%= f.text_field :contact_number, placeholder: :"Eg. 0123456789" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label for="input01" class="control-label">National Identity*</label>
-		<div class="controls">
-			<%= f.text_field :national_identity, placeholder: :"Eg. 911225105599" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label for="input01" class="control-label">Facebook Name*</label>
-		<div class="controls">
-			<%= f.text_field :facebook_name, placeholder: :"Your name in facebook" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<div class="controls">
-			<%= f.submit "Submit", class: :"btn btn-success" %>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label for="input01" class="control-label">* Mandatory field</label>
+	<div class="form-actions">
+		<%= f.button :submit, class: :"btn btn-success" %>
+		<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
 	</div>
 <% end %>
