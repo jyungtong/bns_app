@@ -16,7 +16,7 @@ class UserEvent < ActiveRecord::Base
 	end
 
 	def timestamp
-		self.created_at.localtime
+		self.created_at
 	end
 
 	def cannot_join_expired_event
