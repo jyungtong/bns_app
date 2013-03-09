@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def join_status(user_events)
-		user_events.include?(self) ? "joined" : "nojoin"
+		user_events.include?(self) ? "joined" : (is_expired? ? "expired" : "nojoin")
 	end
 
 	def include_student?(student)
