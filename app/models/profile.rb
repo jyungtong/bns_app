@@ -21,4 +21,18 @@ class Profile < ActiveRecord::Base
 		first_name.blank? || last_name.blank? || contact_number.blank? || 
 		national_identity.blank? || facebook_name.blank?
 	end
+
+	def ic_age_gender
+		"#{national_identity} (#{age}, #{gender})"
+	end
+
+	def age
+		id_year = national_identity.scan(/../).first.to_i
+		exact_year = (2000 + id_year) > Time.now.year ? 1900 + id_year : 2000 + id_year
+		Time.now.year - exact_year
+	end
+
+	def gender
+		national_identity.scan(/./).last.to_i.odd? ? "Male" : "Female"
+	end
 end
