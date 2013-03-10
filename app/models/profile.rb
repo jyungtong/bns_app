@@ -35,4 +35,16 @@ class Profile < ActiveRecord::Base
 	def gender
 		national_identity.scan(/./).last.to_i.odd? ? "Male" : "Female"
 	end
+
+	def contact_number_in_report
+		contact_number.length == 10 ? contact_number_10 : contact_number_11
+	end
+
+	def contact_number_10
+		contact_number.scan(/(\d{3})(\d{3})(\d{4})/).first.join(" ")
+	end
+
+	def contact_number_11
+		contact_number.scan(/(\d{3})(\d{4})(\d{4})/).first.join(" ")
+	end
 end
