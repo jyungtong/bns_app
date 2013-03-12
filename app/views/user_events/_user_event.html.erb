@@ -4,4 +4,5 @@
 	<td><%= user_event.user.profile.ic_age_gender %></td>
 	<td><%= user_event.user.profile.contact_number_in_report %></td>
 	<td><%= user_event.user.email %></td>
+	<td><%= button_to "Kick", quit_event_path(user_event.event) %></td>
 </tr>
