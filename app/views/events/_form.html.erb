@@ -6,21 +6,27 @@
 	<%= f.input :end_place %>
 
 	<%= f.input :event_date, wrapper_html: { id: :"event_datepicker" }, wrapper: :append do %>
-		<%= f.input_field :event_date, as: :string, "data-format" => "dd-MM-yyyy" %>
+		<%= f.input_field :event_date, 
+				value: :"#{@event.event_date.blank? ? "" : @event.event_date.strftime("%d-%m-%Y")}", 
+				as: :string, "data-format" => "dd-MM-yyyy" %>
 		<%= content_tag :span, 
 				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
 				class: :"add-on" %>
 	<% end %>
 
 	<%= f.input :start_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
-		<%= f.input_field :start_time, as: :string, "data-format" => "HH:mm PP" %>
+		<%= f.input_field :start_time, 
+				value: :"#{@event.start_time.blank? ? "" : formatted_time(@event.start_time)}", 
+				as: :string, "data-format" => "HH:mm PP" %>
 		<%= content_tag :span, 
 				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
 				class: :"add-on" %>
 	<% end %>
 
 	<%= f.input :end_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
-		<%= f.input_field :end_time, as: :string, "data-format" => "HH:mm PP" %>
+		<%= f.input_field :end_time, 
+				value: :"#{@event.end_time.blank? ? "" : formatted_time(@event.end_time)}", 
+				as: :string, "data-format" => "HH:mm PP" %>
 		<%= content_tag :span, 
 				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
 				class: :"add-on" %>
