@@ -19,13 +19,11 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  # socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
-  host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  database: dcnjg8hq93r91q
+  username: jzmhjjottkcmwr
+  password: 21BhFv6HiEaegFDmyckwrlVvnI
+  host: ec2-107-22-183-27.compute-1.amazonaws.com
+  port: 5432
