@@ -13,6 +13,8 @@ Bns::Application.routes.draw do
 		end
 	end
 
+	resources :user_events
+
 	scope '/student' do
 		resources :profile 
 		resources :education_profile
