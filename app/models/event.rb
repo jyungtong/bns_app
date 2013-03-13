@@ -57,6 +57,10 @@ class Event < ActiveRecord::Base
 		self.event_date < DateTime.now
 	end
 
+	def is_hidden?
+		self.hidden
+	end
+
 	def end_time_cannot_be_earlier_than_start_time
 		if end_time && start_time 
 			if end_time < start_time
