@@ -7,10 +7,17 @@ class Event < ActiveRecord::Base
 
 	validate :end_time_cannot_be_earlier_than_start_time
 
-	has_many :user_events
+	has_many :user_events, dependent: :destroy
 	has_many :users, through: :user_events
 
 	default_scope order('event_date DESC')
+
+	before_save :default_values
+
+	def default_values
+		self.max_student ||= 0
+		self.backup_student ||= 0
+	end
 
 	def total_student
 		max_student + backup_student
