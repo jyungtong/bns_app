@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 	attr_accessible :school_name, :start_place, :end_place, :event_date, 
 									:start_time, :end_time, :max_student, :allowance_claim,
-									:agency_in_charge, :backup_student
+									:agency_in_charge, :backup_student, :hidden
 
 	validates :school_name, :event_date, :start_time, :end_time, presence: :true
 

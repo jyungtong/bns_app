@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303034654) do
+ActiveRecord::Schema.define(:version => 20130313030417) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -38,13 +38,14 @@ ActiveRecord::Schema.define(:version => 20130303034654) do
     t.string   "end_place"
     t.integer  "max_student"
     t.string   "allowance_claim"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.date     "event_date"
     t.time     "start_time"
     t.time     "end_time"
     t.string   "agency_in_charge"
     t.integer  "backup_student"
+    t.boolean  "hidden",           :default => false
   end
 
   create_table "profiles", :force => true do |t|

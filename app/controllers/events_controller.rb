@@ -3,9 +3,11 @@ class EventsController < ApplicationController
 
   def index
 		@user = current_student || current_admin
-		@events = Event.all
 		if @user.is_a? Student
 			@user_events = @user.events  
+			@events = Event.where(hidden: false)
+		else
+			@events = Event.all
 		end
   end
 
