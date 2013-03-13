@@ -40,6 +40,8 @@
 
 	<%= f.input :agency_in_charge %>
 
+	<%= f.input :hidden, as: :boolean %>
+
 	<div class="form-actions">
 		<%= f.button :submit, class: :"btn-success" %>
 		<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
