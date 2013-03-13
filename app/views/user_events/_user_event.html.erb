@@ -1,7 +1,8 @@
-<tr>
+<tr id="<%= dom_id user_event %>">
 	<td><%= user_event.timestamp %></td>
 	<td><%= user_event.user.profile.full_name %></td>
 	<td><%= user_event.user.profile.ic_age_gender %></td>
 	<td><%= user_event.user.profile.contact_number_in_report %></td>
 	<td><%= user_event.user.email %></td>
+	<td><%= button_to "Kick", user_event_path(user_event), method: :delete, remote: true %></td>
 </tr>
