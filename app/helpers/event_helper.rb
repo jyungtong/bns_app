@@ -19,7 +19,15 @@ module EventHelper
 		if user_events
 			event.join_status(user_events)
 		else
-			"admin"
+			if event.is_expired?
+				"expired"
+			elsif event.is_hidden?
+				"is-hidden"
+			elsif !event.is_hidden? && event.seats_available == "FULL"
+				"published full"
+			else
+				"published"
+			end
 		end
 	end
 

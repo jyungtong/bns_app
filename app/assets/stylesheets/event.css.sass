@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.bordered tr.joined
-	background-color: #3FD975
-
-.bordered tr.expired
-	background-color: #d9d9d9
-
-.bordered tr:hover.joined
-	background-color: #3FD975
-
-.bordered tr:hover.expired
-	background-color: #d9d9d9
+.bordered tr
+	&.joined
+		background-color: #3FD975
+	&.expired
+		background-color: #d9d9d9
+	&.published
+		background-color: #f4ff9a
+	&.published.full
+		background-color: #baffb2
+	&.is-hidden
+		background-color: #ffcccc
