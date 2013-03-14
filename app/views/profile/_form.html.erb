@@ -1,12 +1,29 @@
-<%= simple_form_for(@profile, validate: true, html: { class: :"form-horizontal" }) do |f| %>
-	<%= f.input :first_name %>
-	<%= f.input :last_name %>
-	<%= f.input :contact_number %>
-	<%= f.input :national_identity %>
-	<%= f.input :facebook_name %>
+<div class="container-fluid">
+	<%= simple_form_for(@profile, validate: true, html: { class: :"form-horizontal" }) do |f| %>
+		<legend>Student Information</legend>
+		<div class="span8">
+			<div class="row-fluid">
+				<div class="span5">
+					<%= f.input :first_name, placeholder: :"First name here..." %>
 
-	<div class="form-actions">
-		<%= f.button :submit, class: :"btn btn-success" %>
-		<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
-	</div>
-<% end %>
+					<%= f.input :contact_number, wrapper: :prepend, required: true do %>
+						<%= f.input_field :contact_number_prefix, collection: telco_options %>
+						<%= f.input_field :contact_number_affix %>
+					<% end %>
+				</div>
+				<div class="span5">
+					<%= f.input :last_name, placeholder: :"Last name here..." %>
+				</div>
+			</div>
+
+
+			<%= f.input :national_identity, input_html: { placeholder: :"Eg: 911225105599" } %>
+			<%= f.input :facebook_name, input_html: { placeholder: :"Facebook display name..." } %>
+		
+			<div class="form-actions">
+				<%= f.button :submit, class: :"btn-success" %>
+				<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
+			</div>
+		</div>
+	<% end %>
+</div>
