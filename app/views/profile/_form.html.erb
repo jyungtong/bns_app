@@ -1,21 +1,19 @@
 <div class="container-fluid">
 	<%= simple_form_for(@profile, validate: true, html: { class: :"form-horizontal" }) do |f| %>
 		<legend>Student Information</legend>
-		<div class="span8">
 			<div class="row-fluid">
-				<div class="span5">
+				<div class="span4">
 					<%= f.input :first_name, placeholder: :"First name here..." %>
-
-					<%= f.input :contact_number, wrapper: :prepend, required: true do %>
-						<%= f.input_field :contact_number_prefix, collection: telco_options %>
-						<%= f.input_field :contact_number_affix %>
-					<% end %>
 				</div>
-				<div class="span5">
+				<div class="span3">
 					<%= f.input :last_name, placeholder: :"Last name here..." %>
 				</div>
 			</div>
 
+			<%= f.input :contact_number, wrapper: :prepend, required: true do %>
+				<%= f.input_field :contact_number_prefix, collection: telco_options, class: :span1 %>
+				<%= f.input_field :contact_number_affix, class: :span2 %>
+			<% end %>
 
 			<%= f.input :national_identity, input_html: { placeholder: :"Eg: 911225105599" } %>
 			<%= f.input :facebook_name, input_html: { placeholder: :"Facebook display name..." } %>
@@ -24,6 +22,5 @@
 				<%= f.button :submit, class: :"btn-success" %>
 				<%= link_to "Cancel", events_path, class: :"btn btn-danger" %>
 			</div>
-		</div>
 	<% end %>
 </div>
