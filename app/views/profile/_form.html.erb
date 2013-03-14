@@ -17,6 +17,13 @@
 
 		<%= f.input :national_identity, input_html: { placeholder: :"Eg: 911225105599" } %>
 		<%= f.input :facebook_name, input_html: { placeholder: :"Facebook display name..." } %>
+
+		<legend>Education Profile</legend>
+
+		<%= f.input :current_university, collection: university_options %>
+		<%= f.input :major_study %>
+		<%= f.input :intake_year %>
+		<%= f.input :graduation_year %>
 	
 		<div class="form-actions">
 			<%= f.button :submit, class: :"btn-success" %>

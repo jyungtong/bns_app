@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313030417) do
+ActiveRecord::Schema.define(:version => 20130314085006) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(:version => 20130313030417) do
     t.string   "contact_number"
     t.string   "national_identity"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "facebook_name"
+    t.string   "current_university"
+    t.string   "major_study"
+    t.integer  "intake_year"
+    t.integer  "graduation_year"
   end
 
   create_table "user_events", :force => true do |t|

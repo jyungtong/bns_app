@@ -16,9 +16,9 @@ class ProfileController < ApplicationController
 		@profile.assign_attributes params[:profile]
 
 		if @profile.save
-			flash[:notice] = "You have successfully updated profile."
+			flash.now[:notice] = "You have successfully updated profile."
 		else
-			flash[:alert] = "Failed to save profile information."
+			flash.now[:alert] = "Failed to save profile information."
 		end
 
 		#redirect_to profile_index_path(tab: "profile")
