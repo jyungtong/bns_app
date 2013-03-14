@@ -4,7 +4,7 @@ module ContentHelper
   end
 
   def resource
-    @resource ||= User.new
+    @resource ||= current_student
   end
 
   def devise_mapping

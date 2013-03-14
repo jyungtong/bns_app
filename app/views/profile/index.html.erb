@@ -1,7 +1,39 @@
 <h1>Profile</h1>
-<h3>Student Information</h3>
 
-<%= render "form" %>
+<ul class="nav nav-tabs" id="profile-nav">
+	<li class="<%= "active" if params[:tab] == "profile" %>">
+		<a href="#profile" data-toggle="tab">Student Profile</a>
+	</li>
 
-<h3><%= link_to "Edit Education Profile", education_profile_index_path %></h3>
-<h3><%= link_to "Edit Login Information", edit_student_registration_path %></h3>
+	<li class="<%= "active" if params[:tab] == "edu" %>">
+		<a href="#edu" data-toggle="tab">Education Profile</a>
+	</li>
+
+	<li class="<%= "active" if params[:tab] == "login" %>">
+		<a href="#login" data-toggle="tab">Login Settings</a>
+	</li>
+</ul>
+
+<div class="tab-content" id="profile-content">
+	<div class="tab-pane <%= "active" if params[:tab] == "profile" %>" id="profile">
+		<%= render "form" %>
+	</div>
+
+	<div class="tab-pane <%= "active" if params[:tab] == "edu" %>" id="edu">
+		<%= render "education_profile/form" %>
+	</div>
+
+	<div class="tab-pane" id="login">
+		<%= render template: "devise/registrations/edit" %>
+	</div>
+</div>
+
+<script>
+	$('#profile-nav a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	})	
+	$(function () {
+		$('#profile-nav a:first').tab('show');
+	})
+</script>
