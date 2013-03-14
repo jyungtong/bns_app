@@ -18,7 +18,7 @@ class EducationProfileController < ApplicationController
 		if @eduprofile.save
 			flash[:notice] = "You have successfully updated education profile."
 		else
-			flash.now[:alert] = "Failed to save education profile information."
+			flash[:alert] = "Failed to save education profile information."
 		end
 
 		redirect_to profile_index_path(tab: "edu")

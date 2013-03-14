@@ -1,4 +1,4 @@
-<%= simple_form_for(@eduprofile, html: { class: :"form-horizontal" }) do |f| %>
+<%= simple_form_for(eduprofile, html: { class: :"form-horizontal" }) do |f| %>
 	<legend>Education Profile</legend>
 
 	<%= f.input :current_university %>
@@ -8,6 +8,5 @@
 
 	<div class="form-actions">
 		<%= f.button :submit, class: :"btn btn-success" %>
-		<%= link_to "Cancel", profile_index_path, class: :"btn btn-danger" %>
 	</div>
 <% end %>
