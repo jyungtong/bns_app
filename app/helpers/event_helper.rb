@@ -52,4 +52,18 @@ module EventHelper
 
 		return total
 	end
+
+	# Customed dynamic join quit event button
+	def join_quit_button(status, event)
+		if status == "joined" 
+			button_to("Quit Event", quit_event_path(event), 
+			{ confirm: "Are you sure to quit this event?",
+				remote: true, 
+				disabled: (event.seats_available == "FULL" && status != "joined") || event.is_expired? }) 
+		else 
+			button_to("Join Event", join_event_path(event),
+			{ remote: true, 
+				disabled: (event.seats_available == "FULL" && status != "joined") || event.is_expired? }) 
+		end 
+	end
 end

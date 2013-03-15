@@ -8,7 +8,7 @@ event_row.children("#join_status").html("Joined");
 
 event_row.children("#join_button").html("<%= 
 	escape_javascript(button_to "Quit Event", 
-	quit_event_path(@userevent.event), 
+	quit_event_path(@userevent.event), confirm: "Are you sure to quit this event?", 
 	remote: true) %>");
 
 $("#notice").html("<%= escape_javascript(render 'layouts/messages') %>")
