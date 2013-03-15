@@ -22,16 +22,6 @@ ActiveRecord::Schema.define(:version => 20130314085006) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
 
-  create_table "education_profiles", :force => true do |t|
-    t.string   "current_university"
-    t.string   "major_study"
-    t.integer  "intake_year"
-    t.integer  "graduation_year"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
   create_table "events", :force => true do |t|
     t.string   "school_name"
     t.string   "start_place"
