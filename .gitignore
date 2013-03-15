@@ -24,5 +24,6 @@ pickle-email-*.html
 *.swp
 *.lock
 /db/seeds.rb
+/db/database.yml
 Capfile
 /config/deploy.rb
