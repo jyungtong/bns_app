@@ -17,7 +17,7 @@
 	<%= f.input :start_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
 		<%= f.input_field :start_time, 
 				value: :"#{@event.start_time.blank? ? "" : formatted_time(@event.start_time)}", 
-				as: :string, "data-format" => "HH:mm PP" %>
+				as: :string, "data-format" => "hh:mm" %>
 		<%= content_tag :span, 
 				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
 				class: :"add-on" %>
@@ -26,7 +26,7 @@
 	<%= f.input :end_time, wrapper_html: { id: :"event_timepicker" }, wrapper: :append do %>
 		<%= f.input_field :end_time, 
 				value: :"#{@event.end_time.blank? ? "" : formatted_time(@event.end_time)}", 
-				as: :string, "data-format" => "HH:mm PP" %>
+				as: :string, "data-format" => "hh:mm" %>
 		<%= content_tag :span, 
 				content_tag(:i, "", data: { time_icon: :"icon-time", date_icon: :"icon-calendar" }), 
 				class: :"add-on" %>

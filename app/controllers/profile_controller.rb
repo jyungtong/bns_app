@@ -8,12 +8,7 @@ class ProfileController < ApplicationController
 			@user.profile = Profile.new
 		end
 
-		unless @user.education_profile
-			@user.education_profile = EducationProfile.new
-		end
-
 		@profile = @user.profile
-		@eduprofile = @user.education_profile
   end
 
 	def update
@@ -21,11 +16,12 @@ class ProfileController < ApplicationController
 		@profile.assign_attributes params[:profile]
 
 		if @profile.save
-			flash[:notice] = "You have successfully updated profile."
+			flash.now[:notice] = "You have successfully updated profile."
 		else
 			flash.now[:alert] = "Failed to save profile information."
 		end
 
-		redirect_to profile_index_path(tab: "profile")
+		#redirect_to profile_index_path(tab: "profile")
+		render 'index'
 	end
 end

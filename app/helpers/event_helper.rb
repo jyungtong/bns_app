@@ -4,7 +4,7 @@ module EventHelper
 	end
 
 	def formatted_time(t)
-		t.strftime("%I:%M %p")
+		t.strftime("%H:%M")
 	end
 
 	def display_joined(str)

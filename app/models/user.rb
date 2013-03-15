@@ -9,11 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
 	has_one :profile, dependent: :destroy
-	has_one :education_profile, dependent: :destroy
-	has_many :user_events
+	has_many :user_events, dependent: :destroy
 	has_many :events, through: :user_events
-
-	def full_name
-		"#{first_name} #{last_name}"
-	end
 end
