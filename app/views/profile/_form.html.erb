@@ -11,7 +11,8 @@
 		</div>
 
 		<%= f.input :contact_number, wrapper: :prepend, required: true do %>
-			<%= f.input_field :contact_number_prefix, collection: telco_options, class: :span1 %>
+			<%= f.input_field :contact_number_prefix, collection: telco_options, 
+					selected: @profile.contact_number_prefix || "010", class: :span1 %>
 			<%= f.input_field :contact_number_affix, class: :span2 %>
 		<% end %>
 
