@@ -18,7 +18,6 @@ end
 
 group :production do
 	gem 'pg'
-	gem 'unicorn'
 end
 
 gem 'devise'
@@ -50,8 +49,8 @@ gem 'client_side_validations'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
+#gem 'capistrano'
+#gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

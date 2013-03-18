@@ -1,6 +1,4 @@
 Bns::Application.routes.draw do
-  get "education_profile/index"
-
 	resources :events do
 		member do
 			post 'join' => 'events#join'
