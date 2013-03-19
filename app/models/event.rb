@@ -14,6 +14,14 @@ class Event < ActiveRecord::Base
 
 	before_save :default_values
 
+	def self.get_event(user)
+		if user.is_a? Student
+			return Event.where(hidden: false), user.user_events
+		else
+			return Event.all, nil
+		end
+	end
+
 	def default_values
 		self.max_student ||= 0
 		self.backup_student ||= 0

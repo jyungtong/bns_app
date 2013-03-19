@@ -2,13 +2,7 @@ class EventsController < ApplicationController
 	before_filter :custom_user_auth, :profile_must_completed
 
   def index
-		@user = current_student || current_admin
-		if @user.is_a? Student
-			@user_events = @user.events  
-			@events = Event.where(hidden: false)
-		else
-			@events = Event.all
-		end
+		@events, @user_events = Event.get_event(current_student || current_admin)
   end
 
 =begin
