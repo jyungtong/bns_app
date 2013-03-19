@@ -42,7 +42,7 @@ class Profile < ActiveRecord::Base
 	end
 
 	def gender
-		national_identity.scan(/./).last.to_i.odd? ? "Male" : "Female"
+		national_identity.scan(/./).last.to_i.odd? ? "M" : "F"
 	end
 
 	def contact_number_in_report
