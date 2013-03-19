@@ -20,6 +20,8 @@ group :production do
 	gem 'pg'
 end
 
+gem 'thin'
+gem 'faye'
 gem 'devise'
 
 # Gems used only for assets and not required

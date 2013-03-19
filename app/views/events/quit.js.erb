@@ -2,7 +2,9 @@ var event_row = $("#<%= dom_id @userevent.event %>");
 
 event_row.removeClass("joined").addClass("nojoin");
 
-event_row.children("#seats_available").html("<%= @userevent.event.seats_available_over_total %>");
+<% broadcast "/events/join" do %>
+	$("#<%= dom_id @userevent.event %> #seats_available").html("<%= @userevent.event.seats_available_over_total %>");
+<% end %>
 
 event_row.children("#join_status").html("Not yet join");
 

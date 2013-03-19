@@ -1,11 +1,7 @@
 module ApplicationHelper
-	def eduprofile
-		@user = current_student
-
-		unless @user.education_profile
-			@user.education_profile = EducationProfile.new
-		end
-
-		@eduprofile = @user.education_profile
+	def broadcast(channel, &block)
+		message = { channel: channel, data: capture(&block) }
+		uri = URI.parse("http://localhost:9292/faye")
+		Net::HTTP.post_form(uri, message: message.to_json)
 	end
 end
