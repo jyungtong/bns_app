@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_filter :custom_user_auth, :profile_must_completed
+	before_filter :must_be_admin, only: [ :new, :edit, :destroy, :create, :update ]
 
   def index
 		@events, @user_events = Event.get_event(current_student || current_admin)
@@ -13,15 +14,12 @@ class EventsController < ApplicationController
 =end
 
 	def new
-		redirect_to root_path if student_signed_in?
 		@event = Event.new 
 	end
 
+	# To show the student's joined events
 	def joined
-		# To show the student's joined events
-		@user = current_student 
-		@events = current_student.events
-		@user_events = @user.events
+		@user_events = @events = current_student.events
 	end
 
 	def create
@@ -34,7 +32,6 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		redirect_to root_path unless admin_signed_in?
 		@event = Event.find params[:id]
 	end
 
@@ -50,11 +47,6 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-		unless admin_signed_in?
-			redirect_to root_path
-			return
-		end
-
 		@event = Event.find params[:id]
 		if @event.destroy
 			redirect_to root_path, notice: "Event has been successfully deleted."
@@ -93,4 +85,12 @@ class EventsController < ApplicationController
 	def show_participants
 		@events = Event.find params[:event_ids]
 	end
+
+	private
+		def must_be_admin
+			unless admin_signed_in?
+				redirect_to root_path
+				return
+			end
+		end
 end
