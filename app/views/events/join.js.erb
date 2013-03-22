@@ -13,9 +13,7 @@ event_row.children("#join_button").html("<%=
 	quit_event_path(@userevent.event), confirm: "Are you sure to quit this event?", 
 	remote: true) %>");
 
+$("#notice").hide().stop();
+
 $("#notice").html("<%= escape_javascript(render 'layouts/messages') %>")
-	.slideDown(function() {
-		setTimeout(function() {
-			$("#notice").slideUp();
-		}, 5000);
-	});
+  .slideDown(300).delay(5000).slideUp(300);

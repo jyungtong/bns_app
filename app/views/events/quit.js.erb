@@ -13,9 +13,5 @@ event_row.children("#join_button").html("<%=
 	join_event_path(@userevent.event), 
 	remote: true) %>");
 
-$("#notice").html("<%= escape_javascript(render 'layouts/messages') %>")
-	.slideDown(function() {
-		setTimeout(function() {
-			$("#notice").slideUp();
-		}, 5000);
-	});
+$("#notice").hide().html("<%= escape_javascript(render 'layouts/messages') %>")
+  .stop().slideDown(300).delay(5000).slideUp(300);
