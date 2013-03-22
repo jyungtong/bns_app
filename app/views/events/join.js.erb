@@ -13,7 +13,5 @@ event_row.children("#join_button").html("<%=
 	quit_event_path(@userevent.event), confirm: "Are you sure to quit this event?", 
 	remote: true) %>");
 
-$("#notice").hide().stop();
-
-$("#notice").html("<%= escape_javascript(render 'layouts/messages') %>")
-  .slideDown(300).delay(5000).slideUp(300);
+$("#notice").hide().html("<%= escape_javascript(render 'layouts/messages') %>")
+  .stop().slideDown(300).delay(5000).slideUp(300);
