@@ -7,11 +7,11 @@
 	<td><%= formatted_time(event.start_time) %></td>
 	<td><%= formatted_time(event.end_time) %></td>
 	<td><%= event.school_name %></td>
-	<td><%= event.agency_in_charge %></td>
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
-	<td><%= event.allowance_claim %></td>
 	<% if admin_signed_in? %>
+    <td><%= event.agency_in_charge %></td>
+    <td><%= event.allowance_claim %></td>
 		<td id="seats_available"><%= event.seats_available_over_max_backup %></td>
 	<% else %>
 		<td id="seats_available"><%= event.seats_available_over_total %></td>
