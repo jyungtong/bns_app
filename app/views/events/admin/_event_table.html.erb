@@ -10,20 +10,20 @@
 			<%= content_tag :th, "No.", 
 					{ abbr: :Number, 
 						scope: :col, 
-						colspan: admin_signed_in? ? 2 : 1 } %>
+						colspan: 2 } %>
 			<th scope="col" abbr="Date">Event Date</th>
 			<th scope="col" abbr="StartT">Start Time</th>
 			<th scope="col" abbr="EndT">End Time</th>
 			<th scope="col" abbr="School">School Name</th>
-			<th scope="col" abbr="AIC">Agency In Charge</th>
 			<th scope="col" abbr="StartP">Start Place</th>
 			<th scope="col" abbr="EndP">End Place</th>
+      <th scope="col" abbr="AIC">Agency In Charge</th>
 			<th scope="col" abbr="Allowance">Allowance Claim</th>
 			<th scope="col" abbr="Seats">Seats Avail. / Total</th>
 			<th colspan="2"></th>
 		</tr>
 	</thead>
 	<tbody>
-		<%= render @events %>
+    <%= render partial: "events/admin/event", collection: @events, as: :event %>
 	</tbody>
 </table>

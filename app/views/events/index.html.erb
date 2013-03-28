@@ -2,11 +2,11 @@
 
 <% if admin_signed_in? %>
 	<%= form_tag show_participants_events_path do %>
-		<%= render 'event_table' %>
+		<%= render "events/admin/event_table" %>
 		<div class="form-actions">
-			<%= submit_tag 'Show Participants', class: :"btn btn-primary" %>
+			<%= submit_tag "Show Participants", class: :"btn btn-primary" %>
 		</div>
 	<% end %>
 <% else %>
-	<%= render 'event_table' %>
+  <%= render "events/student/event_table" %>
 <% end %>

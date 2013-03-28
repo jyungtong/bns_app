@@ -6,7 +6,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= render 'days_joined', events: @events, users: get_all_users(@events) %>
+		<%= render "events/admin/days_joined", events: @events, users: get_all_users(@events) %>
 	</tbody>
 </table>
 
@@ -23,7 +23,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= render "multi_events", events: @events %>
+		<%= render "events/admin/multi_events", events: @events %>
 	</tbody>
 	<tfoot>
 		<th>Total Participants</th>

@@ -2,7 +2,7 @@
 
 <div id="events">
 	<% unless @events.empty? %>
-		<%= render 'event_table' %>
+    <%= render "events/student/event_table" %>
 	<% else %>
 		<%= content_tag :p, "You have not joined any events yet." %>
 	<% end %>
