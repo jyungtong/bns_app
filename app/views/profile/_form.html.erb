@@ -23,8 +23,10 @@
 
 		<%= f.input :current_university, collection: university_options %>
 		<%= f.input :major_study %>
-		<%= f.input :intake_year %>
-		<%= f.input :graduation_year %>
+    <%= f.input :intake_year, collection: year_options, 
+                selected: @profile.intake_year || Time.now.year %>
+    <%= f.input :graduation_year, collection: year_options, 
+                selected: @profile.graduation_year || Time.now.year %>
 	
 		<div class="form-actions">
 			<%= f.button :submit, class: :"btn-success" %>

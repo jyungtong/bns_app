@@ -6,4 +6,10 @@ module ProfileHelper
 	def university_options
 		["APU", "TARC", "HELP", "INTI", "TAYLOR", "UTAR", "OTHERS"]
 	end
+
+  def year_options
+    year_range = 5
+    year = Time.now.year
+    ((year-year_range)..(year+year_range)).to_a
+  end
 end
