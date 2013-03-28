@@ -1,9 +1,9 @@
 <h1>Participants</h1>
 
 <% if @events.count > 1 %>
-	<%= render "show_multi_events_participants" %>
+	<%= render "events/admin/show_multi_events_participants" %>
 <% else %>
-	<%= render "show_single_event_participants" %>
+	<%= render "events/admin/show_single_event_participants" %>
 <% end %>
 
 <%= link_to "Back", :back %>

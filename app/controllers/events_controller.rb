@@ -39,10 +39,10 @@ class EventsController < ApplicationController
 		@event = Event.find params[:id]
 		if @event.update_attributes params[:event]
 			flash.now[:notice] = "Event has been successfully updated."
-			render 'edit'
+			render "edit"
 		else
 			# flash.now[:error] = "Event failed to update."
-			render 'edit'
+			render "edit"
 		end
 	end
 
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
 				format.js
 			else
 				format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
-				format.js { render 'fail_join.js.erb', userevent: @userevent }
+				format.js { render "fail_join.js.erb", userevent: @userevent }
 			end
 		end
 	end
