@@ -17,3 +17,8 @@ form { margin: 0 0 0; }
   display: block;
   clear: none;
 }
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-error;
+}
