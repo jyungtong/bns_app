@@ -7,5 +7,8 @@
 	<td><%= event.start_place %></td>
 	<td><%= event.end_place %></td>
   <td id="seats_available"><%= event.seats_available_over_total %></td>
-	<%= render "events/shared/event_action", event: event, status: status %>
+	<td id="join_button">
+		<%= join_quit_button status, event %>
+	</td>
+	<td id="join_status"><%= event.is_expired? ? "Expired" : display_joined(status) %></td>
 </tr>

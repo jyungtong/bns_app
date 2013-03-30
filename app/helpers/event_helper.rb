@@ -36,7 +36,7 @@ module EventHelper
 
 		# To retrieve all users with union method
 		for event in events
-			users = users | event.users
+      users = users | event.users.where(user_events: { join_status: true })
 		end
 
 		return users
@@ -47,7 +47,7 @@ module EventHelper
 		total = 0
 
 		for user in users
-			total += ((( user.events & events ).count) == days) ? 1 : 0
+      total += ((( user.events.where(user_events: { join_status: true }) & events ).count) == days) ? 1 : 0
 		end
 
 		return total

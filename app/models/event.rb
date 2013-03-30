@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
 	# Get event index by user type
 	def self.get_event(user)
 		if user.is_a? Student
-			return Event.where(hidden: false), user.events
+			return Event.where(hidden: false), user.events.where(user_events: { join_status: true })
 		else
 			return Event.all, nil
 		end
@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
 
 	# show how many seats available, show full if left 0
 	def seats_available
-		available = total_student - UserEvent.where(event_id: self.id).count
+		available = total_student - UserEvent.joined_students_count(self.id)
 
 		if available > 0
 			available

@@ -28,7 +28,7 @@
 	<tfoot>
 		<th>Total Participants</th>
 		<% for event in @events %>
-			<th><%= event.users.count %></th>
+			<th><%= UserEvent.joined_students_count(event.id) %></th>
 		<% end %>
 		<th></th>
 	</tfoot>

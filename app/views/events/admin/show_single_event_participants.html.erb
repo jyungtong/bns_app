@@ -1,3 +1,5 @@
+<h1>Participants</h1>
+
 <table class="bordered" id="participants_table">
 	<thead>
 		<tr>
@@ -10,6 +12,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= render @events.first.user_events %>
+		<%= render @userevents %>
 	</tbody>
 </table>
+
+<%= link_to "Back", :back %>

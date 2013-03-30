@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
 	# To show the student's joined events
 	def joined
-		@user_events = @events = current_student.events
+		@user_events = @events = current_student.events.where(user_events: { join_status: true })
 	end
 
 	def create
@@ -56,34 +56,57 @@ class EventsController < ApplicationController
 	end
 
 	def join
-		@userevent = current_student.user_events.build(event_id: params[:id])
+    @userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
 
 		respond_to do |format|
-			if @userevent.save
-				flash.now[:notice] = "You have successfully joined the event."
-				format.html { redirect_to :back, notice: "You have successfully joined the event." }
-				format.js
-			else
-				format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
-				format.js { render "fail_join.js.erb", userevent: @userevent }
-			end
+      unless @userevent
+        @userevent = current_student.user_events.build(event_id: params[:id])
+        if @userevent.save
+          flash.now[:notice] = "You have successfully joined the event."
+          format.html { redirect_to :back, notice: "You have successfully joined the event." }
+          format.js
+        else
+          format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
+          format.js { render "fail_join.js.erb", userevent: @userevent }
+        end
+      else
+        @userevent.assign_attributes(join_status:true)
+        if @userevent.save
+          flash.now[:notice] = "You have successfully joined the event."
+          format.html { redirect_to :back, notice: "You have successfully joined the event." }
+          format.js
+        else
+          format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
+          format.js { render "fail_join.js.erb", userevent: @userevent }
+        end
+      end
 		end
 	end
 
 	def quit
-		@userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
+    @userevent = UserEvent.where(user_id: current_student.id, event_id: params[:id]).first
 
 		respond_to do |format|
-			if @userevent.destroy
-				flash.now[:notice] = "You have quit the event."
-				format.html { redirect_to :back, notice: "You have quit the event." }
-				format.js
-			end
+      @userevent.assign_attributes(join_status:false)
+      if @userevent.save
+        flash.now[:notice] = "You have quit the event."
+        format.html { redirect_to :back, notice: "You have quit the event." }
+        format.js
+      else
+        format.html { redirect_to :back, alert: @userevent.errors.full_messages.first }
+        format.js { render "fail_join.js.erb", userevent: @userevent }
+      end
 		end
 	end
 
 	def show_participants
 		@events = Event.find params[:event_ids]
+    if @events.count > 1
+      render template: "events/admin/show_multi_events_participants"
+    else
+      @userevents = @events.first.user_events.where(join_status: true)
+      render template: "events/admin/show_single_event_participants"
+    end
 	end
 
 	private
