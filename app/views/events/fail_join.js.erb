@@ -1,3 +1,5 @@
 alert("<%= @userevent.errors.full_messages.first %>");
 
-document.location.reload(<%= @userevent.update_count > 4 ? false : true %>);
+<% if @userevent.update_count < 5 %>
+  document.location.reload(true)
+<% end %>
