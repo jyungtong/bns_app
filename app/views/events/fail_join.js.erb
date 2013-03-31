@@ -1,5 +1,5 @@
 alert("<%= @userevent.errors.full_messages.first %>");
 
-<% if @userevent.update_count < 5 %>
+<% if @userevent.update_count < APP_CONFIG["flood_count"] %>
   document.location.reload(true)
 <% end %>

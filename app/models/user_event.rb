@@ -24,12 +24,12 @@ class UserEvent < ActiveRecord::Base
   end
 
   def refresh_update_info
-    if !self.updated_at || Time.now - self.updated_at > 5.minutes 
+    if !self.updated_at || Time.now - self.updated_at > APP_CONFIG["flood_minutes"].minutes 
       self.recent_updated_at = Time.now 
       self.update_count = 0
     end
 
-    if Time.now - self.recent_updated_at < 5.minutes
+    if Time.now - self.recent_updated_at < APP_CONFIG["flood_minutes"].minutes
       self.update_count += 1
     end
   end
@@ -49,8 +49,8 @@ class UserEvent < ActiveRecord::Base
 	end
 
   def student_cannot_flood_join
-    if Time.now - self.recent_updated_at < 5.minutes && self.update_count > 5
-      errors.add(:event, "is flooded. Please try again after 5 minutes.")
+    if Time.now - self.recent_updated_at < APP_CONFIG["flood_unrestrict"].minutes && self.update_count > APP_CONFIG["flood_count"]
+      errors.add(:event, "is flooded. Please try again after #{APP_CONFIG["flood_unrestrict"]} minutes.")
     end
   end
 
