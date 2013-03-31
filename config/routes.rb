@@ -11,7 +11,7 @@ Bns::Application.routes.draw do
 		end
 	end
 
-	resources :user_events
+	resources :user_events, only: [:create, :destroy]
 
 	scope '/student' do
 		resources :profile 
