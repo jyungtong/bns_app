@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 	before_filter :must_be_admin, only: [ :new, :edit, :destroy, :create, :update ]
 
   def index
-		@events, @user_events = Event.get_event((current_student || current_admin), params[:page])
+    @events = Event.get_event((current_student || current_admin), params[:page])
   end
 
 =begin
@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
 	# To show the student's joined events
 	def joined
-		@user_events = @events = current_student.events.where(user_events: { join_status: true })
+		@user_events = @events = current_student.events.where(user_events: { join_status: true }).paginate(page: params[:page])
 	end
 
 	def create

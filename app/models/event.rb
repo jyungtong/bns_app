@@ -23,9 +23,9 @@ class Event < ActiveRecord::Base
 	# Get event index by user type
 	def self.get_event(user, page)
 		if user.is_a? Student
-			return Event.where(hidden: false).paginate(page: page), user.events.where(user_events: { join_status: true }).paginate(page: page)
+			return Event.where(hidden: false).paginate(page: page)
 		else
-			return Event.paginate(page: page), nil
+			return Event.paginate(page: page)
 		end
 	end
 
@@ -46,13 +46,13 @@ class Event < ActiveRecord::Base
 	end
 
 	# status for current event, for css styling
-	def join_status(user_events)
-		user_events.include?(self) ? "joined" : (is_expired? ? "expired" : "nojoin")
-	end
-
-	# whether the current event joined by the given student
-	def include_student?(student)
-		self.users.include?(student)
+	def join_status(user)
+    userevent = UserEvent.where(event_id: self.id, user_id: user.id).first
+    if userevent
+      userevent.join_status ? "joined" : (is_expired? ? "expired" : "nojoin")
+    else
+      "nojoin"
+    end
 	end
 
 	# student view of seats available
