@@ -1,4 +1,4 @@
-<tr id="<%= dom_id event %>" class="<%= status = get_join_status(event, @user_events) %>">
+<tr id="<%= dom_id event %>" class="<%= status = get_join_status(event) %>">
 	<td><%= event_counter + 1 %></td>
 	<td><%= formatted_date(event.event_date) %></td>
 	<td><%= formatted_time(event.start_time) %></td>
@@ -8,7 +8,7 @@
 	<td><%= event.end_place %></td>
   <td id="seats_available"><%= event.seats_available_over_total %></td>
 	<td id="join_button">
-		<%= join_quit_button status, event %>
+		<%= join_quit_button(status, event) %>
 	</td>
 	<td id="join_status"><%= event.is_expired? ? "Expired" : display_joined(status) %></td>
 </tr>

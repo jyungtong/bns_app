@@ -1,0 +1,1 @@
+$("#events").html("<%= escape_javascript(render("events/#{admin_signed_in? ? "admin":"student"}/event_table")) %>");

@@ -1,9 +1,3 @@
-<div id="notice" style="display: none;"></div>
-
-<% content_for :head do %>
-	<%= stylesheet_link_tag "event" %>
-<% end %>
-
 <table class="bordered" id="event_table">
 	<thead>
 		<tr>
@@ -27,3 +21,4 @@
     <%= render partial: "events/admin/event", collection: @events, as: :event %>
 	</tbody>
 </table>
+<%= ajax_will_paginate @events %>

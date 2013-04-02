@@ -15,9 +15,9 @@ module EventHelper
 		str == "joined" ? "Quit" : "Join"
 	end
 
-	def get_join_status(event, user_events)
-		if user_events
-			event.join_status(user_events)
+	def get_join_status(event)
+		if student_signed_in?
+			event.join_status(current_student)
 		else
 			if event.is_expired?
 				"expired"

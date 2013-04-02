@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Brother & Sister Programme Malaysia</title>
-		<%= stylesheet_link_tag    "application",	
+		<%= stylesheet_link_tag    "application", "event",	
 				"http://necolas.github.com/normalize.css/2.1.0/normalize.css" %>
 		<%= javascript_include_tag "application", "http://localhost:9292/faye.js" %>
 		<%= yield(:head) %>
@@ -23,6 +23,7 @@
         <div class="content">
            <div class="row">
             <div class="span12">
+              <div id="notice" style="display: none;"></div>
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
