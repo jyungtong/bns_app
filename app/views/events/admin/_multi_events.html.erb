@@ -3,7 +3,11 @@
 	<tr>
 		<th><%= user.profile.full_name %></th>
 		<% for event in events %>
-			<td><%= UserEvent.where(event_id: event.id, user_id: user.id).first.join_status ? (@i += 1; "●") : "" %></td>
+      <% if userevent = UserEvent.where(event_id: event.id, user_id: user.id).first %>
+        <td><%= userevent.join_status ? (@i += 1; "●") : "" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
 		<% end %>
 		<td><%= @i %></td>
 	</tr>
