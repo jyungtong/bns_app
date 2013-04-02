@@ -25,3 +25,4 @@
 		<%= render partial: "events/student/event", collection: @events, as: :event %>
 	</tbody>
 </table>
+<%= will_paginate @events %>

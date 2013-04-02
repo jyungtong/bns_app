@@ -21,11 +21,11 @@ class Event < ActiveRecord::Base
 	end
 
 	# Get event index by user type
-	def self.get_event(user)
+	def self.get_event(user, page)
 		if user.is_a? Student
-			return Event.where(hidden: false), user.events.where(user_events: { join_status: true })
+			return Event.where(hidden: false).paginate(page: page), user.events.where(user_events: { join_status: true })
 		else
-			return Event.all, nil
+			return Event.paginate(page: page), nil
 		end
 	end
 

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 	before_filter :must_be_admin, only: [ :new, :edit, :destroy, :create, :update ]
 
   def index
-		@events, @user_events = Event.get_event(current_student || current_admin)
+		@events, @user_events = Event.get_event((current_student || current_admin), params[:page])
   end
 
 =begin

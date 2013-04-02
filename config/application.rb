@@ -60,5 +60,8 @@ module Bns
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Set global will_paginate per_page
+    WillPaginate.per_page = 5
   end
 end
