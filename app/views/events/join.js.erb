@@ -19,10 +19,10 @@ function renderNotice() {
 
 if ($("#notice").is(":hidden")) {
   renderNotice();
-  $("#notice").slideDown(500).delay(5000).hide(500);
+  $("#notice").slideDown(500);
 } else {
   $("#notice").hide(500, function() {
     renderNotice();
-    $(this).slideDown(500).delay(5000).hide(500);
+    $(this).slideDown(500);
   });
 }
