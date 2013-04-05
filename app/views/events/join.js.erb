@@ -1,17 +1,28 @@
+<% broadcast "/events/join" do %>
+	$("#<%= dom_id @userevent.event %> #seats_available").html("<%= @userevent.event.seats_available_over_total %>");
+<% end %>
+
 var event_row = $("#<%= dom_id @userevent.event %>");
 
 event_row.removeClass("nojoin").addClass("joined");
 
 event_row.children("#join_status").html("Joined");
 
-<% broadcast "/events/join" do %>
-	$("#<%= dom_id @userevent.event %> #seats_available").html("<%= @userevent.event.seats_available_over_total %>");
-<% end %>
-
 event_row.children("#join_button").html("<%= 
 	escape_javascript(button_to "Quit Event", 
 	quit_event_path(@userevent.event), confirm: "Are you sure to quit this event?", 
 	remote: true) %>");
 
-$("#notice").hide().html("<%= escape_javascript(render 'layouts/messages') %>")
-  .stop().slideDown(300).delay(5000).slideUp(300);
+function renderNotice() {
+  $("#notice").html("<%= escape_javascript(render("layouts/messages")) %>");
+}
+
+if ($("#notice").is(":hidden")) {
+  renderNotice();
+  $("#notice").slideDown(500).delay(5000).hide(500);
+} else {
+  $("#notice").hide(500, function() {
+    renderNotice();
+    $(this).slideDown(500).delay(5000).hide(500);
+  });
+}
