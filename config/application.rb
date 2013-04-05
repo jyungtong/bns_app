@@ -62,6 +62,6 @@ module Bns
     config.assets.version = '1.0'
 
     # Set global will_paginate per_page
-    WillPaginate.per_page = 5
+    WillPaginate.per_page = 10
   end
 end

@@ -7,7 +7,9 @@ test:
   <<: *default
 
 development:
-  <<: *default
+  flood_minutes: 5
+  flood_unrestrict: 10
+  flood_count: 1000
 
 production:
   <<: *default
