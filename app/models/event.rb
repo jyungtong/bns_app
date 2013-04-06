@@ -10,9 +10,9 @@ class Event < ActiveRecord::Base
 	has_many :user_events, dependent: :destroy
 	has_many :users, through: :user_events
 
-	default_scope order('event_date DESC')
-
 	before_save :default_values
+
+	default_scope order('event_date DESC')
 
 	# Set default values if nothing has input for max and backup student
 	def default_values
