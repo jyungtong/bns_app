@@ -11,6 +11,8 @@ class UserEvent < ActiveRecord::Base
   validate :exceed_max_student, :cannot_join_expired_event
   validate :student_cannot_flood_join, on: :update
 
+	default_scope order('created_at ASC')
+
 	def timestamp
 		self.created_at
 	end
