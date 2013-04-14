@@ -15,4 +15,4 @@ development:
 
 production:
   <<: *default
-  faye_url: "http://bnsprogram.com"
+  faye_url: "http://bnsprogram-faye.cloudfoundry.com"
