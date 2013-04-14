@@ -5,11 +5,14 @@ default: &default
   
 test:
   <<: *default
+  faye_url: "http://localhost:9292"
 
 development:
   flood_minutes: 5
   flood_unrestrict: 10
   flood_count: 1000
+  faye_url: "http://localhost:9292"
 
 production:
   <<: *default
+  faye_url: "http://bnsprogram.com"
