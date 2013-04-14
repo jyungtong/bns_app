@@ -35,4 +35,12 @@
     </div> <!--! end of #main -->
 
 	</body>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			var client = new Faye.Client("<%= escape_javascript(APP_CONFIG["faye_url"]) %>/faye");
+				client.subscribe("/events/join", function(data) {
+					eval(data);
+			});
+		});
+	</script>
 </html>
