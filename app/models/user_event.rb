@@ -11,14 +11,16 @@ class UserEvent < ActiveRecord::Base
   validate :exceed_max_student, :cannot_join_expired_event
   validate :student_cannot_flood_join, on: :update
 
-	default_scope order('created_at ASC')
-
 	def timestamp
 		self.created_at
 	end
 
+	def self.show_participants(event_id)
+		self.select("ue.*").from("user_events as ue").joins("JOIN profiles AS p ON p.user_id = ue.user_id").order("p.first_name ASC").where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
+	end
+
   def self.joined_students(event_id)
-    self.where(event_id: event_id, join_status: true)
+		self.select("DISTINCT ue.user_id").from("user_events as ue").joins("JOIN profiles AS p ON p.user_id = ue.user_id").order("p.first_name ASC").where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
   end
 
   def self.joined_students_count(event_id)
