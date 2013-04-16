@@ -16,10 +16,3 @@
 //= bootstrap-datetimepicker.min.js
 //= require back_button
 //= require rails.validations
-
-$(function() {
-	var client = new Faye.Client("http://localhost:9292/faye");
-	client.subscribe("/events/join", function(data) {
-		eval(data);
-	});
-});

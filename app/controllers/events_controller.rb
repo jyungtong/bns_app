@@ -104,7 +104,8 @@ class EventsController < ApplicationController
     if @events.count > 1
       render template: "events/admin/show_multi_events_participants"
     else
-      @userevents = @events.first.user_events.where(join_status: true)
+      #@userevents = @events.first.user_events.where(join_status: true)
+			@userevents = UserEvent.show_participants(@events)
       render template: "events/admin/show_single_event_participants"
     end
 	end
