@@ -16,11 +16,20 @@ class UserEvent < ActiveRecord::Base
 	end
 
 	def self.show_participants(event_id)
-		self.select("ue.*").from("user_events as ue").joins("JOIN profiles AS p ON p.user_id = ue.user_id").order("p.first_name ASC").where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
+		self.select("ue.*")
+				.from("user_events as ue")
+				.joins("JOIN profiles AS p ON p.user_id = ue.user_id")
+				.order("p.first_name ASC")
+				.where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
 	end
 
   def self.joined_students(event_id)
-		self.select("DISTINCT ue.user_id").from("user_events as ue").joins("JOIN profiles AS p ON p.user_id = ue.user_id").order("p.first_name ASC").where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
+		self.select("ue.user_id")
+				.from("user_events as ue")
+				.joins("JOIN profiles AS p ON p.user_id = ue.user_id")
+				.order("p.first_name ASC")
+				.where("ue.join_status = ? AND ue.event_id in (?)", true, event_id)
+				.uniq
   end
 
   def self.joined_students_count(event_id)
